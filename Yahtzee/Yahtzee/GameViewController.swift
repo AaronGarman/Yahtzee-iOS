@@ -11,6 +11,12 @@ class GameViewController: UIViewController {
     
     var player = Player()
     
+    // score buttons for looping style changes
+    
+    var diceButtons: [UIButton] = []
+    var upperScoreButtons: [UIButton] = [] // init here v init func? would buttons even be ready in init?
+    var lowerScoreButtons: [UIButton] = []
+    
     // dice buttons
     
     @IBOutlet weak var diceOneButton: UIButton!
@@ -44,107 +50,76 @@ class GameViewController: UIViewController {
     @IBOutlet weak var totalScoreLabel: UILabel!
     
     @IBAction func didTapRollButton(_ sender: UIButton) {
-        
-        /*
-        // put this elsewhere?
-        for i in 0...6 {
-            if player.upperScoring[i].isActive {
-                player.upperScoring[i].value = 0
-            }
-            
-            if player.lowerScoring[i].isActive {
-                player.lowerScoring[i].value = 0
-            }
-        } */
-        
         rollDice()
         updateScores()
     }
     
     @IBAction func didTapDiceButton(_ sender: UIButton) {
+        var index: Int?
+        
         if sender == diceOneButton {
-            updateDiceButton(diceButton: sender, index: 0)
-            print("dice 1")
+            index = 0
         }
         else if sender == diceTwoButton {
-            updateDiceButton(diceButton: sender, index: 1)
-            print("dice 2")
+            index = 1
         }
         else if sender == diceThreeButton {
-            updateDiceButton(diceButton: sender, index: 2)
-            print("dice 3")
+            index = 2
         }
         else if sender == diceFourButton {
-            updateDiceButton(diceButton: sender, index: 3)
-            print("dice 4")
+            index = 3
         }
         else if sender == diceFiveButton {
-            updateDiceButton(diceButton: sender, index: 4)
-            print("dice 5")
+            index = 4
         }
         else {
             print("Unknown source - dice buttons")
         }
         
-        // any way just 1 func call n above just do index? eh, no want handle diff value?
+        if let validIndex = index {
+            updateDiceButton(diceButton: sender, index: validIndex)
+        }
     }
     
     @IBAction func didTapScoreButton(_ sender: UIButton) {
         if sender == onesButton {
             addScore(scoreButton: sender, index: 0, scoreType: "upper")
-            print("ones button")
         }
         else if sender == twosButton {
             addScore(scoreButton: sender, index: 1, scoreType: "upper")
-            print("twos button")
         }
         else if sender == threesButton {
             addScore(scoreButton: sender, index: 2, scoreType: "upper")
-            print("threes button")
         }
         else if sender == foursButton {
             addScore(scoreButton: sender, index: 3, scoreType: "upper")
-            print("fours button")
         }
         else if sender == fivesButton {
             addScore(scoreButton: sender, index: 4, scoreType: "upper")
-            print("fives button")
         }
         else if sender == sixesButton {
             addScore(scoreButton: sender, index: 5, scoreType: "upper")
-            print("sixes button")
-        }
-        else if sender == bonusButton {
-            //addScore(scoreButton: sender, index: 6, scoreType: "upper")
-            print("bonus button")
         }
         else if sender == threeOfKindButton {
             addScore(scoreButton: sender, index: 0, scoreType: "lower")
-            print("3x button")
         }
         else if sender == fourOfKindButton {
             addScore(scoreButton: sender, index: 1, scoreType: "lower")
-            print("4x button")
         }
         else if sender == fullHouseButton {
             addScore(scoreButton: sender, index: 2, scoreType: "lower")
-            print("full h button")
         }
         else if sender == smallStraightButton {
             addScore(scoreButton: sender, index: 3, scoreType: "lower")
-            print("sm button")
         }
         else if sender == largeStraightButton {
             addScore(scoreButton: sender, index: 4, scoreType: "lower")
-            print("lg button")
         }
         else if sender == yahtzeeButton {
             addScore(scoreButton: sender, index: 5, scoreType: "lower")
-            print("ytz button")
         }
         else if sender == chanceButton {
             addScore(scoreButton: sender, index: 6, scoreType: "lower")
-            print("chnc button")
         }
         else {
             print("Unknown source - score buttons")
@@ -153,36 +128,29 @@ class GameViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        // var upperScoringButtons = [onesButton, twosButton, threesButton] declare above n assign here
-        // do for dice too
         // 5 places it would be less lines, also do arr 7 or 14?
         
-        
+        diceButtons = [diceOneButton, diceTwoButton, diceThreeButton, diceFourButton, diceFiveButton]
+        upperScoreButtons = [onesButton, twosButton, threesButton, foursButton, fivesButton, sixesButton, bonusButton]
+        lowerScoreButtons = [threeOfKindButton, fourOfKindButton, fullHouseButton, smallStraightButton, largeStraightButton, yahtzeeButton, chanceButton]
     }
 
     func rollDice() {
-        
         clearScoreButtons() // right? clear at start of roll?
         
         for i in 0...4 {
             if !player.diceRack[i].isLocked {
                 player.diceRack[i].value = Int.random(in: 1...6)
+                diceButtons[i].setImage(UIImage(systemName: "die.face.\(player.diceRack[i].value)"), for: .normal)
             }
         }
         
-        diceOneButton.setImage(UIImage(systemName: "die.face.\(player.diceRack[0].value)"), for: .normal)
-        diceTwoButton.setImage(UIImage(systemName: "die.face.\(player.diceRack[1].value)"), for: .normal)
-        diceThreeButton.setImage(UIImage(systemName: "die.face.\(player.diceRack[2].value)"), for: .normal)
-        diceFourButton.setImage(UIImage(systemName: "die.face.\(player.diceRack[3].value)"), for: .normal)
-        diceFiveButton.setImage(UIImage(systemName: "die.face.\(player.diceRack[4].value)"), for: .normal)
-        
-        printDice()
+        //printDice()
+        //print(player.diceRack)
     }
     
     func updateDiceButton(diceButton: UIButton, index: Int) {  // diff name?
-        
-        player.diceRack[index].isLocked.toggle() // toggle ok?
+        player.diceRack[index].isLocked.toggle()
         
         if diceButton.tintColor == .black {
             diceButton.tintColor = .red
@@ -192,12 +160,11 @@ class GameViewController: UIViewController {
         }
     }
     
-    func updateScores() { // do as upper n lower? call update v check?
+    func updateScores() {
         
         // total value for all current dice
         
-        // maybe array?
-        var onesValue = 0, twosValue = 0, threesValue = 0, foursValue = 0, fivesValue = 0, sixesValue = 0 // sep lines?
+        var onesValue = 0, twosValue = 0, threesValue = 0, foursValue = 0, fivesValue = 0, sixesValue = 0
         var totalValue = 0
         
         // calculate dice values
@@ -336,21 +303,10 @@ class GameViewController: UIViewController {
     }
     
     func updateScoreLabels() {
-        onesButton.setTitle(String(player.upperScoring[0].value), for: .normal)
-        twosButton.setTitle(String(player.upperScoring[1].value), for: .normal)
-        threesButton.setTitle(String(player.upperScoring[2].value), for: .normal)
-        foursButton.setTitle(String(player.upperScoring[3].value), for: .normal)
-        fivesButton.setTitle(String(player.upperScoring[4].value), for: .normal)
-        sixesButton.setTitle(String(player.upperScoring[5].value), for: .normal)
-        bonusButton.setTitle(String(player.upperScoring[6].value), for: .normal)
-        
-        threeOfKindButton.setTitle(String(player.lowerScoring[0].value), for: .normal)
-        fourOfKindButton.setTitle(String(player.lowerScoring[1].value), for: .normal)
-        fullHouseButton.setTitle(String(player.lowerScoring[2].value), for: .normal)
-        smallStraightButton.setTitle(String(player.lowerScoring[3].value), for: .normal)
-        largeStraightButton.setTitle(String(player.lowerScoring[4].value), for: .normal)
-        yahtzeeButton.setTitle(String(player.lowerScoring[5].value), for: .normal)
-        chanceButton.setTitle(String(player.lowerScoring[6].value), for: .normal)
+        for i in 0...6 {
+            upperScoreButtons[i].setTitle(String(player.upperScoring[i].value), for: .normal)
+            lowerScoreButtons[i].setTitle(String(player.lowerScoring[i].value), for: .normal)
+        }
     }
     
     // diff name?
@@ -398,20 +354,10 @@ class GameViewController: UIViewController {
     }
     
     func resetDice() {
-        // any way do any loops? only if put numbers in name? how if not string too? or array of buttons?
-        diceOneButton.setImage(UIImage(systemName: "die.face.1"), for: .normal)
-        diceTwoButton.setImage(UIImage(systemName: "die.face.1"), for: .normal)
-        diceThreeButton.setImage(UIImage(systemName: "die.face.1"), for: .normal)
-        diceFourButton.setImage(UIImage(systemName: "die.face.1"), for: .normal)
-        diceFiveButton.setImage(UIImage(systemName: "die.face.1"), for: .normal)
-        
-        diceOneButton.tintColor = .black
-        diceTwoButton.tintColor = .black
-        diceThreeButton.tintColor = .black
-        diceFourButton.tintColor = .black
-        diceFiveButton.tintColor = .black
-        
         for i in 0...4 {
+            diceButtons[i].setImage(UIImage(systemName: "die.face.1"), for: .normal)
+            diceButtons[i].tintColor = .black
+            
             player.diceRack[i].isLocked = false
         }
     }
@@ -421,19 +367,16 @@ class GameViewController: UIViewController {
 
 extension GameViewController {
     
-    func printDice() { // condense any?
-        // space here funcs or no?
-        print("dice one: \(player.diceRack[0].value)")
-        print("dice two: \(player.diceRack[1].value)")
-        print("dice three: \(player.diceRack[2].value)")
-        print("dice four: \(player.diceRack[3].value)")
-        print("dice five: \(player.diceRack[4].value)")
+    func printDice() {
+        for i in 0...4 {
+            print("dice \(i+1): \(player.diceRack[i].value)")
+        }
         
-        print(player.diceRack)
+        print()
     }
     
     func printScores() {
-        print("\n1's: \(player.upperScoring[0].value)")
+        print("1's: \(player.upperScoring[0].value)")
         print("2's: \(player.upperScoring[1].value)")
         print("3's: \(player.upperScoring[2].value)")
         print("4's: \(player.upperScoring[3].value)")
@@ -451,8 +394,12 @@ extension GameViewController {
     }
 }
 
-// any other extension?
-// do _ for func args?
-// maybe just 1 array so no upper n lower need? or do as if?
-// put funcs in logical order? clearing funcs last
 // if all dice locked no roll n put on label msg?
+
+// put funcs in logical order? clearing funcs last
+// condense, any more extensions?
+// arrays both 7 v 14 - kinda like 7 tbh? add score func biggest offender - maybe 14 more optimized? or keep 2 arrays prob
+// upper n lower string to bool or do array 14
+// ib actions maybe array 14 n do index in ifs or func call each?
+// maybe just print arrays rather than custom funcs - maybe no need smaller funcs if not called multiple times?
+// clear out comments + put comments in

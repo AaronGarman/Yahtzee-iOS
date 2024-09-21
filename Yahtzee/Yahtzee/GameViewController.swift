@@ -81,69 +81,66 @@ class GameViewController: UIViewController {
         }
     }
     
-    
-    @IBAction func didTapScoreButton(_ sender: UIButton) {
+    @IBAction func didTapUpperScoreButton(_ sender: UIButton) {
         var index: Int?
-        var isUpper: Bool?
         
         if sender == onesButton {
             index = 0
-            isUpper = true
         }
         else if sender == twosButton {
             index = 1
-            isUpper = true
         }
         else if sender == threesButton {
             index = 2
-            isUpper = true
         }
         else if sender == foursButton {
             index = 3
-            isUpper = true
         }
         else if sender == fivesButton {
             index = 4
-            isUpper = true
         }
         else if sender == sixesButton {
             index = 5
-            isUpper = true
         }
-        else if sender == threeOfKindButton {
+        else {
+            print("Unknown source - upper score buttons")
+        }
+        
+        if let validIndex = index {
+            addScore(scoreButton: sender, index: validIndex, isUpper: true)
+        }
+    }
+    
+    @IBAction func didTapLowerScoreButton(_ sender: UIButton) {
+        var index: Int?
+        
+        if sender == threeOfKindButton {
             index = 0
-            isUpper = false
         }
         else if sender == fourOfKindButton {
             index = 1
-            isUpper = true
         }
         else if sender == fullHouseButton {
             index = 2
-            isUpper = true
         }
         else if sender == smallStraightButton {
             index = 3
-            isUpper = true
         }
         else if sender == largeStraightButton {
             index = 4
-            isUpper = true
         }
         else if sender == yahtzeeButton {
             index = 5
-            isUpper = true
         }
         else if sender == chanceButton {
             index = 6
-            isUpper = true
         }
         else {
-            print("Unknown source - score buttons")
+            print("Unknown source - lower score buttons")
         }
         
-        if let validIndex = index, let validIsUpper = isUpper {
-            addScore(scoreButton: sender, index: validIndex, isUpper: validIsUpper)
+        if let validIndex = index {
+            addScore(scoreButton: sender, index: validIndex, isUpper: false)
         }
     }
     
@@ -386,10 +383,7 @@ class GameViewController: UIViewController {
 // if all dice locked no roll n put on label msg?
 
 // put funcs in logical order? clearing funcs last
-// condense, any more extensions?
-// arrays both 7 v 14 - kinda like 7 tbh? add score func biggest offender - maybe 14 more optimized? or keep 2 arrays prob
-// upper n lower string to bool or do array 14
-// ib actions maybe array 14 n do index in ifs or func call each?
-// maybe just print arrays rather than custom funcs - maybe no need smaller funcs if not called multiple times?
+// condense, any more extensions? keep 2 arrays
+
 // clear out comments + put comments in
-// could do diff handler for upper n lower to keep consistent? how integrate w add score func tho? or still just do type variable but implicit?
+// maybe just print arrays rather than custom funcs - maybe no need smaller funcs if not called multiple times?

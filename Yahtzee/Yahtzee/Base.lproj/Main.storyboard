@@ -186,7 +186,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                 <connections>
-                                    <action selector="didTapScoreButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="66T-9d-2cz"/>
+                                    <action selector="didTapUpperScoreButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VLg-2x-q2V"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vkp-fW-D02">
@@ -196,7 +196,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                 <connections>
-                                    <action selector="didTapScoreButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OUG-RB-Yo9"/>
+                                    <action selector="didTapUpperScoreButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EV1-lh-yVG"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lL3-Fw-bdT">
@@ -206,7 +206,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                 <connections>
-                                    <action selector="didTapScoreButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5x9-V9-LnU"/>
+                                    <action selector="didTapUpperScoreButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gz5-gZ-byE"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="038-eE-5iv">
@@ -216,7 +216,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                 <connections>
-                                    <action selector="didTapScoreButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7aW-4y-D8C"/>
+                                    <action selector="didTapUpperScoreButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="A2Q-iW-PuA"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fW1-pu-e73">
@@ -226,7 +226,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                 <connections>
-                                    <action selector="didTapScoreButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lnC-FV-wMX"/>
+                                    <action selector="didTapUpperScoreButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="CwC-z9-RGp"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="37k-BN-9Xv">
@@ -236,7 +236,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                 <connections>
-                                    <action selector="didTapScoreButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fV8-Yt-dr9"/>
+                                    <action selector="didTapUpperScoreButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="J91-Fg-vaN"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PAk-Se-c20">
@@ -245,9 +245,6 @@
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Button"/>
-                                <connections>
-                                    <action selector="didTapScoreButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Kwg-Rh-w5a"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zzr-GA-nnT">
                                 <rect key="frame" x="254" y="164" width="75" height="35"/>
@@ -256,7 +253,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                 <connections>
-                                    <action selector="didTapScoreButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="h63-Eo-16T"/>
+                                    <action selector="didTapLowerScoreButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Iq2-2g-Nql"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kYG-dK-dW3">
@@ -266,7 +263,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                 <connections>
-                                    <action selector="didTapScoreButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3ip-tC-OXr"/>
+                                    <action selector="didTapLowerScoreButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zJJ-0K-e3a"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SVS-Mk-OL2">
@@ -276,7 +273,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                 <connections>
-                                    <action selector="didTapScoreButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="djT-MH-tgs"/>
+                                    <action selector="didTapLowerScoreButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ENv-Og-HVb"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="14f-26-hYZ">
@@ -286,7 +283,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                 <connections>
-                                    <action selector="didTapScoreButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YJt-pR-LWu"/>
+                                    <action selector="didTapLowerScoreButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vQX-nK-dVZ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4dN-eh-ITV">
@@ -296,7 +293,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                 <connections>
-                                    <action selector="didTapScoreButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4KC-ce-W6E"/>
+                                    <action selector="didTapLowerScoreButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FtP-CF-h1C"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X2Q-UQ-ILN">
@@ -306,7 +303,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                 <connections>
-                                    <action selector="didTapScoreButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ymi-oS-97h"/>
+                                    <action selector="didTapLowerScoreButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LhT-p8-IU3"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dNl-SN-3CP">
@@ -325,7 +322,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                 <connections>
-                                    <action selector="didTapScoreButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="f4X-QB-fKu"/>
+                                    <action selector="didTapLowerScoreButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pcN-K5-qpe"/>
                                 </connections>
                             </button>
                         </subviews>

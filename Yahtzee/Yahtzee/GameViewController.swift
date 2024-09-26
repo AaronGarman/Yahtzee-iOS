@@ -47,7 +47,11 @@ class GameViewController: UIViewController {
     
     // info labels
     
+    
+    @IBOutlet weak var turnInfoLabel: UILabel!
     @IBOutlet weak var totalScoreLabel: UILabel!
+    
+    @IBOutlet weak var rollDicebutton: UIButton!
     
     @IBAction func didTapRollButton(_ sender: UIButton) {
         rollDice()
@@ -152,10 +156,36 @@ class GameViewController: UIViewController {
         diceButtons = [diceOneButton, diceTwoButton, diceThreeButton, diceFourButton, diceFiveButton]
         upperScoreButtons = [onesButton, twosButton, threesButton, foursButton, fivesButton, sixesButton, bonusButton]
         lowerScoreButtons = [threeOfKindButton, fourOfKindButton, fullHouseButton, smallStraightButton, largeStraightButton, yahtzeeButton, chanceButton]
+        
+        for diceButton in diceButtons { // put these into func, 2 places call
+            diceButton.isEnabled = false
+        }
+        
+        for upperScoreButton in upperScoreButtons {
+            upperScoreButton.isEnabled = false
+        }
+        
+        for lowerScoreButton in lowerScoreButtons {
+            lowerScoreButton.isEnabled = false
+        }
     }
 
     func rollDice() {
-        resetScores() // right? clear at start of roll?
+        resetScores() // right? clear at start of roll? in here also set all buttons to enabled?
+        
+        if player.rollCount == 0 {
+            for diceButton in diceButtons {
+                diceButton.isEnabled = true
+            }
+            
+            for upperScoreButton in upperScoreButtons {
+                upperScoreButton.isEnabled = true // only if not locked? or taken care of? do i even need locks or just disable? still use locks for score calc?
+            }
+            
+            for lowerScoreButton in lowerScoreButtons {
+                lowerScoreButton.isEnabled = true // only if not locked? or taken care of? do i even need locks or just disable? still use locks for score calc?
+            }
+        }
         
         for i in 0...4 {
             if !player.diceRack[i].isLocked {
@@ -165,6 +195,16 @@ class GameViewController: UIViewController {
         }
         
         // print(player.diceRack)
+        
+        player.rollCount += 1
+        
+        if player.rollCount == 3 {
+            rollDicebutton.isEnabled = false
+            turnInfoLabel.text = "Select a move to score!"
+        }
+        else {
+            turnInfoLabel.text = "Roll the dice, or score a move!"
+        }
     }
     
     func updateDiceButton(diceButton: UIButton, index: Int) {  // diff name?
@@ -358,6 +398,24 @@ class GameViewController: UIViewController {
         resetDice()
         
         // disable dice until roll?
+        
+        rollDicebutton.isEnabled = true // put this into func? below too
+        player.rollCount = 0
+        
+        for diceButton in diceButtons { // put these into func, 2 places call
+            diceButton.isEnabled = false
+        }
+        
+        for upperScoreButton in upperScoreButtons {
+            upperScoreButton.isEnabled = false // only lock if not already locked? or no need check?
+        }
+        
+        for lowerScoreButton in lowerScoreButtons {
+            lowerScoreButton.isEnabled = false
+        }
+        
+        turnInfoLabel.text = "Roll the dice to start your turn!"
+        
     }
     
     func resetScores() {
@@ -385,3 +443,8 @@ class GameViewController: UIViewController {
 // maybe ext func here to print all values?
 
 // clear out comments + put comments in, clean up
+// maybe disabled tint keep same as black? https://stackoverflow.com/questions/45834966/uibutton-tintcolor-for-disabled-and-enabled-state/45835079#45835079
+// for buttons class could also do green background when disabled? still need locks for scoring or others?
+
+// mainly just 2 button handlers?
+// any func stuff in diff orders? mainly for 2 last handlers?

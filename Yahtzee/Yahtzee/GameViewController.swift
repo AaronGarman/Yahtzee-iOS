@@ -146,7 +146,8 @@ class GameViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // 5 places it would be less lines, also do arr 7 or 14?
+        
+        bonusButton.isEnabled = false
         
         diceButtons = [diceOneButton, diceTwoButton, diceThreeButton, diceFourButton, diceFiveButton]
         upperScoreButtons = [onesButton, twosButton, threesButton, foursButton, fivesButton, sixesButton, bonusButton]
@@ -154,7 +155,7 @@ class GameViewController: UIViewController {
     }
 
     func rollDice() {
-        clearScoreButtons() // right? clear at start of roll?
+        resetScores() // right? clear at start of roll?
         
         for i in 0...4 {
             if !player.diceRack[i].isLocked {
@@ -163,7 +164,7 @@ class GameViewController: UIViewController {
             }
         }
         
-        //print(player.diceRack)
+        // print(player.diceRack)
     }
     
     func updateDiceButton(diceButton: UIButton, index: Int) {  // diff name?
@@ -313,23 +314,25 @@ class GameViewController: UIViewController {
             player.lowerScoring[6].value = totalValue
         }
         
-      // more funcs for stuff?
+        // more funcs for stuff?
     
-        updateScoreLabels()
-        //addScore() // call here or diff?
+        updateScoreButtons()
+        
+        // print(player.upperScoring)
+        // print(player.lowerScoring)
     }
     
-    func updateScoreLabels() {
+    func updateScoreButtons() {
         for i in 0...6 {
             upperScoreButtons[i].setTitle(String(player.upperScoring[i].value), for: .normal)
             lowerScoreButtons[i].setTitle(String(player.lowerScoring[i].value), for: .normal)
         }
     }
     
-    // diff name?
+    // diff name? addInScore
     func addScore(scoreButton: UIButton, index: Int, isUpper: Bool) { // put stuff in order, any to above? if do above if even need? just disable? if no disable keep here so only write once? do as guard let? either do bool or do 14 array
-        
-        if isUpper {
+
+        if isUpper { // any way combine upper n lower?
             guard player.upperScoring[index].isActive else { return }
             player.totalScore += player.upperScoring[index].value
             player.upperScoring[index].isActive = false
@@ -343,22 +346,21 @@ class GameViewController: UIViewController {
         totalScoreLabel.text = String(player.totalScore)
         scoreButton.tintColor = .green // do default once scored?
        
-        
         // clear out boxes not scored yet - keep here v somewhere else?
         
-        clearScoreButtons()
-
-        updateScoreLabels()
+        resetScores()
+        updateScoreButtons() // maybe call in reset scores?
+        
         //scoreButton.isEnabled = false // disable - phsycial or from class data?
         
-        // turn below into funcs - reset dice to default (maybe diff than 1?) also reset locks. lock if all 5 dice locked, no roll? bool? disable dice until roll?
+        // lock if all 5 dice locked, no roll? bool?
         
         resetDice()
         
-        // call func above
+        // disable dice until roll?
     }
     
-    func clearScoreButtons() {
+    func resetScores() {
         for i in 0...6 {
             if player.upperScoring[i].isActive {
                 player.upperScoring[i].value = 0
@@ -370,7 +372,7 @@ class GameViewController: UIViewController {
         }
     }
     
-    func resetDice() {
+    func resetDice() { // could possibly put this into func that calls it?
         for i in 0...4 {
             diceButtons[i].setImage(UIImage(systemName: "die.face.1"), for: .normal)
             diceButtons[i].tintColor = .black
@@ -380,10 +382,6 @@ class GameViewController: UIViewController {
     }
 }
 
-// if all dice locked no roll n put on label msg?
+// maybe ext func here to print all values?
 
-// put funcs in logical order? clearing funcs last
-// condense, any more extensions? keep 2 arrays
-
-// clear out comments + put comments in
-// maybe just print arrays rather than custom funcs - maybe no need smaller funcs if not called multiple times?
+// clear out comments + put comments in, clean up

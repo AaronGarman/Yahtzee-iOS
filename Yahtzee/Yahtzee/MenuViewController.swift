@@ -15,7 +15,7 @@ class MenuViewController: UIViewController {
         super.viewDidLoad()
         
         let defaults = UserDefaults.standard
-        defaults.set(300, forKey: "HighScore")
+        //defaults.set(101, forKey: "HighScore")
         let highScore = defaults.integer(forKey: "HighScore")
         highScoreLabel.text = String(highScore)
 

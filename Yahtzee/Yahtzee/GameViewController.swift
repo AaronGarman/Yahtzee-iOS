@@ -393,6 +393,7 @@ class GameViewController: UIViewController {
         if isUpper { // any way combine upper n lower?
             guard player.upperScoring[index].isActive else { return }
             player.totalScore += player.upperScoring[index].value
+            player.upperScore += player.upperScoring[index].value // for upper bonus
             player.upperScoring[index].isActive = false
         }
         else {
@@ -403,7 +404,10 @@ class GameViewController: UIViewController {
         
         totalScoreLabel.text = String(player.totalScore)
         scoreButton.tintColor = .green // do default once scored?
-       
+        
+        
+        // check for double yahtzee here?
+        
         // clear out boxes not scored yet - keep here v somewhere else?
         
         resetScores()
@@ -419,6 +423,7 @@ class GameViewController: UIViewController {
         
         rollDicebutton.isEnabled = true // put this into func? below too
         player.rollCount = 0
+        player.turnCount += 1
         
         for diceButton in diceButtons { // put these into func, 2 places call
             diceButton.isEnabled = false
@@ -432,7 +437,30 @@ class GameViewController: UIViewController {
             lowerScoreButton.isEnabled = false
         }
         
-        turnInfoLabel.text = "Roll the dice to start your turn!"
+        // need actual add to top score - some stuff no need if rearrange, like adding n labels
+        
+        if player.upperScore >= 63 && player.bonusActive {
+            player.upperScoring[6].value = 35
+            upperScoreButtons[6].setTitle(String(player.upperScoring[6].value), for: .normal)
+            player.totalScore += 35
+            totalScoreLabel.text = String(player.totalScore) // do this later so no need?
+            upperScoreButtons[6].isEnabled = false // no need? if change styling tho, do as sep class? or somethin diff?
+            player.bonusActive = false
+        }
+        
+        if player.turnCount == 13 {
+            rollDicebutton.isEnabled = false // need all these?
+            let defaults = UserDefaults.standard // def this as func
+            let oldHighScore = defaults.integer(forKey: "HighScore")
+            if player.totalScore > oldHighScore {
+                defaults.set(player.totalScore, forKey: "HighScore")
+            }
+            turnInfoLabel.text = ("Game Over! Click reset to play again!") // diff?
+            // show reset button n enable? or use dice button n change color?
+        }
+        else {
+            turnInfoLabel.text = "Roll the dice to start your turn!"
+        }
         
     }
     
@@ -467,5 +495,9 @@ class GameViewController: UIViewController {
 // mainly just 2 button handlers?
 // any func stuff in diff orders? mainly for 2 last handlers?
 
-// more stuff as funcs
+// more stuff as funcs*** combine any funcs too? focus roll n score funcs flow
 // redorder any logic? espec for roll and score handlers
+
+// org n optimize all here + compare w/ java code + add in double yahtzee
+
+// how update score in main menu? closure or delegate prob

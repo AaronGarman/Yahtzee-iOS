@@ -26,10 +26,11 @@ struct Player {
     
     var lowerScoring = [ScoreBox(), ScoreBox(), ScoreBox(), ScoreBox(), ScoreBox(), ScoreBox(), ScoreBox()]
     
-    // overall score + modifiers
+    // scoring + score modifiers
     
     var totalScore = 0
-    var bonusActive = false
+    var upperScore = 0
+    var bonusActive = true
     var hasYahtzee = false
 }
 

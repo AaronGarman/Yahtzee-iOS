@@ -171,6 +171,24 @@ class GameViewController: UIViewController {
     }
 
     func rollDice() {
+        
+        // test
+        for i in 0...4 { // this n more stuff as sep funcs? return bool?
+            if player.diceRack[i].isLocked {
+                if i < 4 {
+                    continue
+                }
+                else {
+                    turnInfoLabel.text = "Unlock a dice to roll again!" // diff say?
+                    return
+                }
+            }
+            else {
+                break
+            }
+        }
+        // test
+        
         resetScores() // right? clear at start of roll? in here also set all buttons to enabled?
         
         if player.rollCount == 0 {
@@ -448,3 +466,6 @@ class GameViewController: UIViewController {
 
 // mainly just 2 button handlers?
 // any func stuff in diff orders? mainly for 2 last handlers?
+
+// more stuff as funcs
+// redorder any logic? espec for roll and score handlers

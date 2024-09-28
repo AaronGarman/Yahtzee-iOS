@@ -157,11 +157,16 @@ class GameViewController: UIViewController {
         upperScoreButtons = [onesButton, twosButton, threesButton, foursButton, fivesButton, sixesButton, bonusButton]
         lowerScoreButtons = [threeOfKindButton, fourOfKindButton, fullHouseButton, smallStraightButton, largeStraightButton, yahtzeeButton, chanceButton]
         
+        disableButtons()
+
+    }
+    
+    func disableButtons() {
         for diceButton in diceButtons { // put these into func, 2 places call
             diceButton.isEnabled = false
         }
         
-        for upperScoreButton in upperScoreButtons {
+        for upperScoreButton in upperScoreButtons { // only lock if not already locked? or no need check?
             upperScoreButton.isEnabled = false
         }
         
@@ -170,33 +175,14 @@ class GameViewController: UIViewController {
         }
     }
 
-    func rollDice() { // reorder n put stuff into funcs - combine funcs if can
+    func rollDice() { // reorder n put stuff into funcs - combine funcs if can, any diff order?
+        guard !checkAllDiceLocked() else { return } // check all dice locked
+        resetScores() // reset scores to 0 if not scored - right? clear at start of roll? in here also set all buttons to enabled?
+        resetButtons() // reset buttons as enabled once start first roll
         
-        // check if all dice are locked - might be incomplete?
+        player.rollCount += 1
         
-        guard !checkAllDiceLocked() else { return }
-        
-        // reset scores to 0 if not scored - right? clear at start of roll? in here also set all buttons to enabled?
-        
-        resetScores()
-        
-        // reset buttons as enabled once start first roll
-        
-        if player.rollCount == 0 {
-            for diceButton in diceButtons {
-                diceButton.isEnabled = true
-            }
-            
-            for upperScoreButton in upperScoreButtons {
-                upperScoreButton.isEnabled = true // only if not locked? or taken care of? do i even need locks or just disable? still use locks for score calc?
-            }
-            
-            for lowerScoreButton in lowerScoreButtons {
-                lowerScoreButton.isEnabled = true // only if not locked? or taken care of? do i even need locks or just disable? still use locks for score calc?
-            }
-        }
-        
-        // give dice new value and image
+        // give each dice new value and image
         
         for i in 0...4 {
             if !player.diceRack[i].isLocked {
@@ -205,13 +191,7 @@ class GameViewController: UIViewController {
             }
         }
         
-        // print(player.diceRack)
-        
-        // increment roll count
-        
-        player.rollCount += 1
-        
-        // signal last turn or keep rolling
+        // update turn info - check if last roll in turn
         
         if player.rollCount == 3 {
             rollDicebutton.isEnabled = false
@@ -220,6 +200,8 @@ class GameViewController: UIViewController {
         else {
             turnInfoLabel.text = "Roll the dice, or score a move!"
         }
+        
+        // print(player.diceRack)
     }
     
     func checkAllDiceLocked() -> Bool { // check if all dice are locked - might be incomplete?
@@ -241,6 +223,22 @@ class GameViewController: UIViewController {
         return false
     }
     
+    func resetButtons() {
+        guard player.rollCount == 0 else { return } // this here or do if above?
+                
+        for diceButton in diceButtons {
+            diceButton.isEnabled = true
+        }
+        
+        for upperScoreButton in upperScoreButtons {
+            upperScoreButton.isEnabled = true // only if not locked? or taken care of? do i even need locks or just disable? still use locks for score calc?
+        }
+        
+        for lowerScoreButton in lowerScoreButtons {
+            lowerScoreButton.isEnabled = true // only if not locked? or taken care of? do i even need locks or just disable? still use locks for score calc?
+        }
+    }
+    
     func updateDiceButton(diceButton: UIButton, index: Int) {  // diff name?
         player.diceRack[index].isLocked.toggle()
         
@@ -254,7 +252,8 @@ class GameViewController: UIViewController {
     
     func updateScores() {
         
-        // total value for all current dice
+        // total value for all current dice - could do values on outside n do upper n lower scoring funcs? do as array?
+        // or calc here n pass in?
         
         var onesValue = 0, twosValue = 0, threesValue = 0, foursValue = 0, fivesValue = 0, sixesValue = 0
         var totalValue = 0
@@ -441,43 +440,48 @@ class GameViewController: UIViewController {
         player.rollCount = 0
         player.turnCount += 1
         
-        for diceButton in diceButtons { // put these into func, 2 places call
-            diceButton.isEnabled = false
-        }
-        
-        for upperScoreButton in upperScoreButtons {
-            upperScoreButton.isEnabled = false // only lock if not already locked? or no need check?
-        }
-        
-        for lowerScoreButton in lowerScoreButtons {
-            lowerScoreButton.isEnabled = false
-        }
+        disableButtons()
         
         // need actual add to top score - some stuff no need if rearrange, like adding n labels
         
         if player.upperScore >= 63 && player.bonusActive {
-            player.upperScoring[6].value = 35
-            upperScoreButtons[6].setTitle(String(player.upperScoring[6].value), for: .normal)
-            player.totalScore += 35
-            totalScoreLabel.text = String(player.totalScore) // do this later so no need?
-            upperScoreButtons[6].isEnabled = false // no need? if change styling tho, do as sep class? or somethin diff?
-            player.bonusActive = false
+            addBonus()
         }
         
         if player.turnCount == 13 {
-            rollDicebutton.isEnabled = false // need all these?
-            let defaults = UserDefaults.standard // def this as func
-            let oldHighScore = defaults.integer(forKey: "HighScore")
-            if player.totalScore > oldHighScore {
-                defaults.set(player.totalScore, forKey: "HighScore")
-            }
+            endGame()
             turnInfoLabel.text = ("Game Over! Click reset to play again!") // diff?
-            // show reset button n enable? or use dice button n change color?
         }
         else {
             turnInfoLabel.text = "Roll the dice to start your turn!"
         }
         
+    }
+    
+    func addBonus() {
+        player.upperScoring[6].value = 35
+        upperScoreButtons[6].setTitle(String(player.upperScoring[6].value), for: .normal)
+        player.totalScore += 35
+        totalScoreLabel.text = String(player.totalScore) // do this later so no need?
+        upperScoreButtons[6].isEnabled = false // no need? if change styling tho, do as sep class? or somethin diff?
+        player.bonusActive = false
+    }
+    
+    func endGame() {
+        
+        // disable roll button since no more turns
+        
+        rollDicebutton.isEnabled = false // need all these?
+        
+        // update high score
+        
+        let defaults = UserDefaults.standard // def this as func
+        let oldHighScore = defaults.integer(forKey: "HighScore")
+        if player.totalScore > oldHighScore {
+            defaults.set(player.totalScore, forKey: "HighScore")
+        }
+        
+        // show reset button n enable? or use dice button n change color?
     }
     
     func resetScores() {
@@ -517,3 +521,5 @@ class GameViewController: UIViewController {
 // org n optimize all here + compare w/ java code + add in double yahtzee
 
 // how update score in main menu? closure or delegate prob
+
+// logical order for all funcs?

@@ -68,10 +68,10 @@
             </objects>
             <point key="canvasLocation" x="150.38167938931298" y="-2.1126760563380285"/>
         </scene>
-        <!--View Controller-->
+        <!--Rules View Controller-->
         <scene sceneID="5b2-8Z-Eit">
             <objects>
-                <viewController id="WOW-P6-pe6" sceneMemberID="viewController">
+                <viewController id="WOW-P6-pe6" customClass="RulesViewController" customModule="Yahtzee" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sEi-99-Dht">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -97,7 +97,11 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="be3-Ov-bJW">
-                        <barButtonItem key="rightBarButtonItem" title="Done" id="c49-Aa-VKB"/>
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="c49-Aa-VKB">
+                            <connections>
+                                <action selector="didTapDoneButton:" destination="WOW-P6-pe6" id="4ZH-3n-Oup"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3nb-X9-tys" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

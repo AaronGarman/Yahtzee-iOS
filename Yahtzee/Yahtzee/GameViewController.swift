@@ -170,26 +170,17 @@ class GameViewController: UIViewController {
         }
     }
 
-    func rollDice() {
+    func rollDice() { // reorder n put stuff into funcs - combine funcs if can
         
-        // test
-        for i in 0...4 { // this n more stuff as sep funcs? return bool?
-            if player.diceRack[i].isLocked {
-                if i < 4 {
-                    continue
-                }
-                else {
-                    turnInfoLabel.text = "Unlock a dice to roll again!" // diff say?
-                    return
-                }
-            }
-            else {
-                break
-            }
-        }
-        // test
+        // check if all dice are locked - might be incomplete?
         
-        resetScores() // right? clear at start of roll? in here also set all buttons to enabled?
+        guard !checkAllDiceLocked() else { return }
+        
+        // reset scores to 0 if not scored - right? clear at start of roll? in here also set all buttons to enabled?
+        
+        resetScores()
+        
+        // reset buttons as enabled once start first roll
         
         if player.rollCount == 0 {
             for diceButton in diceButtons {
@@ -205,6 +196,8 @@ class GameViewController: UIViewController {
             }
         }
         
+        // give dice new value and image
+        
         for i in 0...4 {
             if !player.diceRack[i].isLocked {
                 player.diceRack[i].value = Int.random(in: 1...6)
@@ -214,7 +207,11 @@ class GameViewController: UIViewController {
         
         // print(player.diceRack)
         
+        // increment roll count
+        
         player.rollCount += 1
+        
+        // signal last turn or keep rolling
         
         if player.rollCount == 3 {
             rollDicebutton.isEnabled = false
@@ -223,6 +220,25 @@ class GameViewController: UIViewController {
         else {
             turnInfoLabel.text = "Roll the dice, or score a move!"
         }
+    }
+    
+    func checkAllDiceLocked() -> Bool { // check if all dice are locked - might be incomplete?
+        for i in 0...4 { // this n more stuff as sep funcs? return bool?
+            if player.diceRack[i].isLocked {
+                if i < 4 { // maybe only check below?
+                    continue
+                }
+                else {
+                    turnInfoLabel.text = "Unlock a dice to roll again!" // diff say?
+                    return true
+                }
+            }
+            else {
+                break
+            }
+        }
+        
+        return false
     }
     
     func updateDiceButton(diceButton: UIButton, index: Int) {  // diff name?

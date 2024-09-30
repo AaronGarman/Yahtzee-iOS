@@ -406,7 +406,7 @@ class GameViewController: UIViewController {
     func addScore(scoreButton: UIButton, index: Int, isUpper: Bool) { // put stuff in order, any to above? if do above if even need? just disable? if no disable keep here so only write once? do as guard let? either do bool or do 14 array
 
         if isUpper { // any way combine upper n lower?
-            guard player.upperScoring[index].isActive else { return }
+            guard player.upperScoring[index].isActive else { return } // maybe no need here or below?
             player.totalScore += player.upperScoring[index].value
             player.upperScore += player.upperScoring[index].value // for upper bonus
             player.upperScoring[index].isActive = false

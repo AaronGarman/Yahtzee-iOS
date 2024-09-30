@@ -40,3 +40,6 @@ playground.xcworkspace
 # Swift PM Binary
 *.swiftdoc
 *.swiftsourceinfo
+
+# Notes
+*.txt

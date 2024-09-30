@@ -68,7 +68,7 @@
             </objects>
             <point key="canvasLocation" x="150.38167938931298" y="-2.1126760563380285"/>
         </scene>
-        <!--Rules View Controller-->
+        <!--Rules-->
         <scene sceneID="5b2-8Z-Eit">
             <objects>
                 <viewController id="WOW-P6-pe6" customClass="RulesViewController" customModule="Yahtzee" customModuleProvider="target" sceneMemberID="viewController">
@@ -96,7 +96,7 @@
                         <viewLayoutGuide key="safeArea" id="piT-mg-p3s"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="be3-Ov-bJW">
+                    <navigationItem key="navigationItem" title="Rules" id="be3-Ov-bJW">
                         <barButtonItem key="rightBarButtonItem" title="Done" id="c49-Aa-VKB">
                             <connections>
                                 <action selector="didTapDoneButton:" destination="WOW-P6-pe6" id="4ZH-3n-Oup"/>

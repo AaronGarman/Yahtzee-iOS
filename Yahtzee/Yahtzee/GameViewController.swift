@@ -465,6 +465,7 @@ class GameViewController: UIViewController {
         totalScoreLabel.text = String(player.totalScore) // do this later so no need?
         upperScoreButtons[6].isEnabled = false // no need? if change styling tho, do as sep class? or somethin diff?
         player.bonusActive = false
+        player.upperScoring[6].isActive = false
     }
     
     func endGame() {

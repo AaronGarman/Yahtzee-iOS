@@ -14,7 +14,9 @@ class GameViewController: UIViewController {
     // score buttons for looping style changes
     
     var diceButtons: [UIButton] = []
+    var upperScoreLabels: [UILabel] = []
     var upperScoreButtons: [UIButton] = [] // init here v init func? would buttons even be ready in init?
+    var lowerScoreLabels: [UILabel] = []
     var lowerScoreButtons: [UIButton] = []
     
     // dice buttons
@@ -25,6 +27,16 @@ class GameViewController: UIViewController {
     @IBOutlet weak var diceFourButton: UIButton!
     @IBOutlet weak var diceFiveButton: UIButton!
     
+    // upper scoring labels
+    
+    @IBOutlet weak var onesLabel: UILabel!
+    @IBOutlet weak var twosLabel: UILabel!
+    @IBOutlet weak var threesLabel: UILabel!
+    @IBOutlet weak var foursLabel: UILabel!
+    @IBOutlet weak var fivesLabel: UILabel!
+    @IBOutlet weak var sixesLabel: UILabel!
+    @IBOutlet weak var bonusLabel: UILabel!
+    
     // upper scoring buttons
     
     @IBOutlet weak var onesButton: UIButton!
@@ -34,6 +46,16 @@ class GameViewController: UIViewController {
     @IBOutlet weak var fivesButton: UIButton!
     @IBOutlet weak var sixesButton: UIButton!
     @IBOutlet weak var bonusButton: UIButton! // disabled or as label? keep button so same styling?
+    
+    // lower scoring labels
+    
+    @IBOutlet weak var threeOfKindLabel: UILabel!
+    @IBOutlet weak var fourOfKindLabel: UILabel!
+    @IBOutlet weak var fullHouseLabel: UILabel!
+    @IBOutlet weak var smallStraightLabel: UILabel!
+    @IBOutlet weak var largeStraightLabel: UILabel!
+    @IBOutlet weak var yahtzeeLabel: UILabel!
+    @IBOutlet weak var chanceLabel: UILabel!
     
     // lower scoring buttons
     
@@ -46,7 +68,6 @@ class GameViewController: UIViewController {
     @IBOutlet weak var chanceButton: UIButton!
     
     // info labels
-    
     
     @IBOutlet weak var turnInfoLabel: UILabel!
     @IBOutlet weak var totalScoreLabel: UILabel!
@@ -157,8 +178,31 @@ class GameViewController: UIViewController {
         upperScoreButtons = [onesButton, twosButton, threesButton, foursButton, fivesButton, sixesButton, bonusButton]
         lowerScoreButtons = [threeOfKindButton, fourOfKindButton, fullHouseButton, smallStraightButton, largeStraightButton, yahtzeeButton, chanceButton]
         
+        upperScoreLabels = [onesLabel, twosLabel, threesLabel, foursLabel, fivesLabel, sixesLabel, bonusLabel]
+        lowerScoreLabels = [threeOfKindLabel, fourOfKindLabel, fullHouseLabel, smallStraightLabel, largeStraightLabel, yahtzeeLabel, chanceLabel]
+        
         disableButtons()
-
+        
+        for button in upperScoreButtons { // put as func? or use i n do one loop?
+            button.layer.borderWidth = 1
+            button.layer.borderColor = UIColor.black.cgColor
+            button.backgroundColor = .green
+        }
+        
+        for button in lowerScoreButtons {
+            button.layer.borderWidth = 1
+            button.layer.borderColor = UIColor.black.cgColor
+        }
+        
+        for label in upperScoreLabels {
+            label.layer.borderWidth = 1
+            label.layer.borderColor = UIColor.black.cgColor
+        }
+        
+        for label in lowerScoreLabels {
+            label.layer.borderWidth = 1
+            label.layer.borderColor = UIColor.black.cgColor
+        }
     }
     
     func disableButtons() {

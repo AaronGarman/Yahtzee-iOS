@@ -186,7 +186,7 @@ class GameViewController: UIViewController {
         for button in upperScoreButtons { // put as func? or use i n do one loop?
             button.layer.borderWidth = 1
             button.layer.borderColor = UIColor.black.cgColor
-            button.backgroundColor = .green
+            //button.backgroundColor = .green
         }
         
         for button in lowerScoreButtons {

@@ -274,13 +274,23 @@ class GameViewController: UIViewController {
             diceButton.isEnabled = true
         }
         
-        for upperScoreButton in upperScoreButtons {
-            upperScoreButton.isEnabled = true // only if not locked? or taken care of? do i even need locks or just disable? still use locks for score calc?
+        for i in 0...6 {
+            if player.upperScoring[i].isActive {
+                upperScoreButtons[i].isEnabled = true // only if not locked? or taken care of? do i even need locks or just disable? still use locks for score calc?
+            }
+            
+            if player.lowerScoring[i].isActive {
+                lowerScoreButtons[i].isEnabled = true // only if not locked? or taken care of? do i even need locks or just disable? still use locks for score calc?
+            }
         }
         
-        for lowerScoreButton in lowerScoreButtons {
-            lowerScoreButton.isEnabled = true // only if not locked? or taken care of? do i even need locks or just disable? still use locks for score calc?
-        }
+//        for upperScoreButton in upperScoreButtons {
+//            upperScoreButton.isEnabled = true // only if not locked? or taken care of? do i even need locks or just disable? still use locks for score calc?
+//        }
+//        
+//        for lowerScoreButton in lowerScoreButtons {
+//            lowerScoreButton.isEnabled = true // only if not locked? or taken care of? do i even need locks or just disable? still use locks for score calc?
+//        }
     }
     
     func updateDiceButton(diceButton: UIButton, index: Int) {  // diff name?
@@ -462,7 +472,7 @@ class GameViewController: UIViewController {
         }
         
         totalScoreLabel.text = String(player.totalScore)
-        scoreButton.tintColor = .green // do default once scored?
+        // scoreButton.tintColor = .green // do default once scored? take out here
         
         
         // check for double yahtzee here?
@@ -500,6 +510,10 @@ class GameViewController: UIViewController {
             turnInfoLabel.text = "Roll the dice to start your turn!"
         }
         
+        // put these above any?
+        scoreButton.backgroundColor = .green
+        scoreButton.setTitleColor(.black, for: .disabled)
+        
     }
     
     func addBonus() {
@@ -510,6 +524,9 @@ class GameViewController: UIViewController {
         upperScoreButtons[6].isEnabled = false // no need? if change styling tho, do as sep class? or somethin diff?
         player.bonusActive = false
         player.upperScoring[6].isActive = false
+        
+        upperScoreButtons[6].backgroundColor = .green
+        upperScoreButtons[6].setTitleColor(.black, for: .disabled)
     }
     
     func endGame() {

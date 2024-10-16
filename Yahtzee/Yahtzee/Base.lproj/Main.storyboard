@@ -116,7 +116,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Roll the dice to start the game!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ijC-QB-o67">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Roll the dice to start the game!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ijC-QB-o67">
                                 <rect key="frame" x="21" y="444" width="346" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -550,7 +550,13 @@
                             <constraint firstItem="XOf-Vc-xia" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="w8H-xP-XbQ"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="MO7-PS-9M3"/>
+                    <navigationItem key="navigationItem" id="MO7-PS-9M3">
+                        <barButtonItem key="rightBarButtonItem" title="New Game" id="603-fo-ynE">
+                            <connections>
+                                <action selector="didTapNewGameButton:" destination="BYZ-38-t0r" id="h4j-Hd-wOx"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="bonusButton" destination="PAk-Se-c20" id="q9p-20-hnz"/>
                         <outlet property="bonusLabel" destination="nhb-Xc-mRu" id="V91-6Q-Oto"/>

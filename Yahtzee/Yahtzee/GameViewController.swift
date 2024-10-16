@@ -74,6 +74,33 @@ class GameViewController: UIViewController {
     
     @IBOutlet weak var rollDicebutton: UIButton!
     
+    
+    @IBAction func didTapNewGameButton(_ sender: Any) {
+        showNewGameAlert()
+    }
+    
+    func startNewGame() { // order matter? any to funcs? any missing? make func called reset game? call on game start?
+        player = Player()
+        
+        for i in 0...6 {
+            upperScoreButtons[i].isEnabled = false
+            lowerScoreButtons[i].isEnabled = false
+            
+            upperScoreButtons[i].backgroundColor = .white
+            lowerScoreButtons[i].backgroundColor = .white
+            upperScoreButtons[i].setTitleColor(.systemGray3, for: .disabled)
+            lowerScoreButtons[i].setTitleColor(.systemGray3, for: .disabled)
+        }
+        
+        disableButtons()
+        resetDice()
+        resetScores()
+        updateScoreButtons()
+        rollDicebutton.isEnabled = true
+        turnInfoLabel.text = "Roll the dice to start the game!"
+        totalScoreLabel.text = "0"
+    }
+    
     @IBAction func didTapRollButton(_ sender: UIButton) {
         rollDice()
         updateScores()
@@ -504,7 +531,7 @@ class GameViewController: UIViewController {
         
         if player.turnCount == 13 {
             endGame()
-            turnInfoLabel.text = ("Game Over! Click reset to play again!") // diff?
+            turnInfoLabel.text = ("Game Over! Click New Game to play again!") // diff?
         }
         else {
             turnInfoLabel.text = "Roll the dice to start your turn!"
@@ -565,6 +592,22 @@ class GameViewController: UIViewController {
             
             player.diceRack[i].isLocked = false
         }
+    }
+    
+    func showNewGameAlert() { // vars n funcs private?
+        let alertController = UIAlertController(
+            title: "Start New Game?",
+            message: "Your current progress for this game will be lost.",
+            preferredStyle: .alert) // caps need?
+
+        let cancelAction = UIAlertAction(title: "Cancel", style: .default)
+        alertController.addAction(cancelAction)
+        let okAction = UIAlertAction(title: "Yes", style: .default) { _ in
+            self.startNewGame()  // Call the restart function here
+        } // maybe make yes?
+        alertController.addAction(okAction)
+
+        present(alertController, animated: true)
     }
 }
 

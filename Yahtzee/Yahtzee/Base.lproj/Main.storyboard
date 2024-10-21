@@ -16,49 +16,74 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Yahtzee" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WKE-TB-7KD">
-                                <rect key="frame" x="120" y="105" width="153" height="77"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="48"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Yahtzee" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WKE-TB-7KD">
+                                <rect key="frame" x="113.66666666666667" y="105" width="165.66666666666663" height="83.333333333333314"/>
+                                <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="52"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vEV-rU-wWn">
-                                <rect key="frame" x="21" y="606" width="350" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="tinted" title="See Rules" buttonSize="large"/>
-                                <connections>
-                                    <segue destination="Uo6-sv-qSp" kind="presentation" id="t0y-cy-ftB"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="High Score" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vum-6O-RQ3">
-                                <rect key="frame" x="120" y="327" width="152" height="39"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xGS-mg-NRx">
-                                <rect key="frame" x="21" y="684" width="350" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Play Game" buttonSize="large"/>
-                                <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="ozi-EB-FkH"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wgm-ln-EFC">
-                                <rect key="frame" x="146" y="388" width="100" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.92135925429999999" green="0.94440758719999995" blue="0.96841150519999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="21" translatesAutoresizingMaskIntoConstraints="NO" id="5kE-HY-826">
+                                <rect key="frame" x="120.66666666666669" y="371.33333333333331" width="152" height="109.33333333333331"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="High Score" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vum-6O-RQ3">
+                                        <rect key="frame" x="0.0" y="0.0" width="152" height="38.333333333333336"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wgm-ln-EFC">
+                                        <rect key="frame" x="25.999999999999986" y="59.333333333333371" width="100" height="50"/>
+                                        <color key="backgroundColor" red="0.92135925429999999" green="0.94440758719999995" blue="0.96841150519999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="aNj-yA-7sw"/>
+                                            <constraint firstAttribute="width" constant="100" id="ifk-I0-DUg"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="Cdy-vd-u4T">
+                                <rect key="frame" x="21.666666666666657" y="642" width="350" height="124"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vEV-rU-wWn">
+                                        <rect key="frame" x="0.0" y="0.0" width="350" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="350" id="Ar8-Zn-zaP"/>
+                                            <constraint firstAttribute="height" constant="50" id="EYH-ty-Apd"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="tinted" title="See Rules" buttonSize="large"/>
+                                        <connections>
+                                            <segue destination="Uo6-sv-qSp" kind="presentation" id="t0y-cy-ftB"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xGS-mg-NRx">
+                                        <rect key="frame" x="0.0" y="74" width="350" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="350" id="MyH-4U-lrT"/>
+                                            <constraint firstAttribute="height" constant="50" id="dco-fP-54E"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Play Game" buttonSize="large"/>
+                                        <connections>
+                                            <segue destination="BYZ-38-t0r" kind="show" id="ozi-EB-FkH"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="8Lx-iq-sZK"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Cdy-vd-u4T" firstAttribute="centerX" secondItem="SeC-Bs-9Wi" secondAttribute="centerX" id="G3c-oG-oR3"/>
+                            <constraint firstItem="WKE-TB-7KD" firstAttribute="centerX" secondItem="SeC-Bs-9Wi" secondAttribute="centerX" id="G4N-Jz-5ak"/>
+                            <constraint firstItem="WKE-TB-7KD" firstAttribute="top" secondItem="8Lx-iq-sZK" secondAttribute="top" constant="2" id="OmB-wb-j1j"/>
+                            <constraint firstItem="5kE-HY-826" firstAttribute="centerY" secondItem="SeC-Bs-9Wi" secondAttribute="centerY" id="abj-96-fU1"/>
+                            <constraint firstItem="8Lx-iq-sZK" firstAttribute="bottom" secondItem="Cdy-vd-u4T" secondAttribute="bottom" constant="52" id="ayy-97-pe1"/>
+                            <constraint firstItem="5kE-HY-826" firstAttribute="centerX" secondItem="SeC-Bs-9Wi" secondAttribute="centerX" id="z58-Wx-ZDn"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Etm-5f-fCL"/>
                     <connections>

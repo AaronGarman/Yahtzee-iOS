@@ -14,6 +14,9 @@ class MenuViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        highScoreLabel.layer.cornerRadius = 10
+        highScoreLabel.layer.masksToBounds = true
+        
         let defaults = UserDefaults.standard
         //defaults.set(101, forKey: "HighScore")
         let highScore = defaults.integer(forKey: "HighScore")

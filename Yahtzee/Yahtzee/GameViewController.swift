@@ -7,9 +7,15 @@
 
 import UIKit
 
+protocol GameViewControllerDelegate: AnyObject {
+    func gameDidEnd()
+}
+
 class GameViewController: UIViewController {
     
     var player = Player()
+    
+    weak var delegate: GameViewControllerDelegate?
     
     // score buttons for looping style changes
     
@@ -562,13 +568,15 @@ class GameViewController: UIViewController {
         
         rollDicebutton.isEnabled = false // need all these?
         
-        // update high score
+        // update high score - do as func?
         
         let defaults = UserDefaults.standard // def this as func
         let oldHighScore = defaults.integer(forKey: "HighScore")
         if player.totalScore > oldHighScore {
             defaults.set(player.totalScore, forKey: "HighScore")
         }
+        
+        delegate?.gameDidEnd()
         
         // show reset button n enable? or use dice button n change color?
     }

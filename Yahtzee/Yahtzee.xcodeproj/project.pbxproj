@@ -17,6 +17,10 @@
 		2F7325C62C9CE0E300DC0E51 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7325C52C9CE0E300DC0E51 /* MenuViewController.swift */; };
 		2F93F63A2CAB3B3500DAA47B /* Notes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2F93F6392CAB3B3500DAA47B /* Notes.txt */; };
 		2FC45A8B2CA8AEAA0040D84C /* RulesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC45A8A2CA8AEAA0040D84C /* RulesViewController.swift */; };
+		2FC748182CD179C400EF4ACC /* RollDice.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2FC748172CD179C300EF4ACC /* RollDice.mp3 */; };
+		2FC7481A2CD179CE00EF4ACC /* Score.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2FC748192CD179CE00EF4ACC /* Score.mp3 */; };
+		2FC7481C2CD179D700EF4ACC /* GameOver.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2FC7481B2CD179D700EF4ACC /* GameOver.mp3 */; };
+		2FC7481E2CD17BDC00EF4ACC /* Pop.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2FC7481D2CD17BDC00EF4ACC /* Pop.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +36,10 @@
 		2F7325C52C9CE0E300DC0E51 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		2F93F6392CAB3B3500DAA47B /* Notes.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Notes.txt; sourceTree = "<group>"; };
 		2FC45A8A2CA8AEAA0040D84C /* RulesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesViewController.swift; sourceTree = "<group>"; };
+		2FC748172CD179C300EF4ACC /* RollDice.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = RollDice.mp3; sourceTree = "<group>"; };
+		2FC748192CD179CE00EF4ACC /* Score.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Score.mp3; sourceTree = "<group>"; };
+		2FC7481B2CD179D700EF4ACC /* GameOver.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = GameOver.mp3; sourceTree = "<group>"; };
+		2FC7481D2CD17BDC00EF4ACC /* Pop.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Pop.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +83,10 @@
 				2F4C87CB2C9BC649001D3BCD /* LaunchScreen.storyboard */,
 				2F4C87CE2C9BC649001D3BCD /* Info.plist */,
 				2F93F6392CAB3B3500DAA47B /* Notes.txt */,
+				2FC748172CD179C300EF4ACC /* RollDice.mp3 */,
+				2FC748192CD179CE00EF4ACC /* Score.mp3 */,
+				2FC7481B2CD179D700EF4ACC /* GameOver.mp3 */,
+				2FC7481D2CD17BDC00EF4ACC /* Pop.mp3 */,
 			);
 			path = Yahtzee;
 			sourceTree = "<group>";
@@ -138,9 +150,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F93F63A2CAB3B3500DAA47B /* Notes.txt in Resources */,
+				2FC7481C2CD179D700EF4ACC /* GameOver.mp3 in Resources */,
 				2F4C87CA2C9BC649001D3BCD /* Assets.xcassets in Resources */,
 				2F4C87CD2C9BC649001D3BCD /* Base in Resources */,
+				2FC7481E2CD17BDC00EF4ACC /* Pop.mp3 in Resources */,
+				2FC7481A2CD179CE00EF4ACC /* Score.mp3 in Resources */,
 				2F4C87C82C9BC647001D3BCD /* Base in Resources */,
+				2FC748182CD179C400EF4ACC /* RollDice.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

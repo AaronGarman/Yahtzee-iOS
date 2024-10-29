@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AudioToolbox
 
 protocol GameViewControllerDelegate: AnyObject {
     func gameDidEnd()
@@ -14,6 +15,8 @@ protocol GameViewControllerDelegate: AnyObject {
 class GameViewController: UIViewController {
     
     var player = Player()
+    
+    var soundIDs: [String: SystemSoundID] = [:]
     
     weak var delegate: GameViewControllerDelegate?
     
@@ -236,6 +239,39 @@ class GameViewController: UIViewController {
             label.layer.borderWidth = 1
             label.layer.borderColor = UIColor.black.cgColor
         }
+        
+        loadSound(name: "RollDice", type: "mp3") // abc order here n left? folders for files too? fig 2 types?
+        loadSound(name: "Score", type: "mp3")
+        loadSound(name: "GameOver", type: "mp3")
+        loadSound(name: "Pop", type: "mp3")
+    }
+    
+    deinit {
+        // Clean up sound IDs to release resources
+        for (_, soundID) in soundIDs {
+            AudioServicesDisposeSystemSoundID(soundID)
+        }
+    }
+    
+    // do these in ext for sound stuff? take prints out?
+    // Helper function to load a sound by name and type
+    func loadSound(name: String, type: String) {
+        if let soundURL = Bundle.main.url(forResource: name, withExtension: type) {
+            var soundID: SystemSoundID = 0
+            AudioServicesCreateSystemSoundID(soundURL as CFURL, &soundID)
+            soundIDs[name] = soundID  // Store in the dictionary
+        } else {
+            print("Failed to load sound: \(name).\(type)")
+        }
+    }
+
+    // Function to play a sound by name
+    func playSound(named name: String) {
+        if let soundID = soundIDs[name] {
+            AudioServicesPlaySystemSound(soundID)
+        } else {
+            print("Sound not found: \(name)")
+        }
     }
     
     func disableButtons() {
@@ -277,6 +313,8 @@ class GameViewController: UIViewController {
         else {
             turnInfoLabel.text = "Roll the dice, or score a move!"
         }
+        
+        playSound(named: "RollDice")
         
         // print(player.diceRack)
     }
@@ -335,6 +373,8 @@ class GameViewController: UIViewController {
         else {
             diceButton.tintColor = .black
         }
+        
+        playSound(named: "Pop")
     }
     
     func updateScores() {
@@ -538,9 +578,11 @@ class GameViewController: UIViewController {
         if player.turnCount == 13 {
             endGame()
             turnInfoLabel.text = ("Game Over! Click New Game to play again!") // diff?
+            playSound(named: "GameOver")
         }
         else {
             turnInfoLabel.text = "Roll the dice to start your turn!"
+            playSound(named: "Score")
         }
         
         // put these above any?

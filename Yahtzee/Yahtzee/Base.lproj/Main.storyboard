@@ -134,7 +134,7 @@
             </objects>
             <point key="canvasLocation" x="1075.5725190839694" y="774.64788732394368"/>
         </scene>
-        <!--Game View Controller-->
+        <!--Yahtzee-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="GameViewController" customModule="Yahtzee" customModuleProvider="target" sceneMemberID="viewController">
@@ -614,7 +614,7 @@
                             <constraint firstItem="Agg-S8-NKY" firstAttribute="top" secondItem="XOf-Vc-xia" secondAttribute="bottom" constant="48" id="xhb-c0-Osl"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="MO7-PS-9M3">
+                    <navigationItem key="navigationItem" title="Yahtzee" id="MO7-PS-9M3">
                         <barButtonItem key="rightBarButtonItem" title="New Game" id="603-fo-ynE">
                             <connections>
                                 <action selector="didTapNewGameButton:" destination="BYZ-38-t0r" id="h4j-Hd-wOx"/>

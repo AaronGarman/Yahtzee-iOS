@@ -244,7 +244,7 @@ class GameViewController: UIViewController {
         loadSound(name: "RollDice", type: "mp3") // abc order here n left? folders for files too? fig 2 types?
         loadSound(name: "Score", type: "mp3")
         loadSound(name: "GameOver", type: "mp3")
-        loadSound(name: "Snap", type: "m4a") // to mp3?
+        loadSound(name: "Snap", type: "mp3")
     }
     
     deinit {

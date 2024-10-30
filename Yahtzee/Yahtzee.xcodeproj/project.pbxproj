@@ -14,13 +14,13 @@
 		2F4C87CA2C9BC649001D3BCD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F4C87C92C9BC649001D3BCD /* Assets.xcassets */; };
 		2F4C87CD2C9BC649001D3BCD /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 2F4C87CC2C9BC649001D3BCD /* Base */; };
 		2F4C87D52C9BC6E3001D3BCD /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4C87D42C9BC6E3001D3BCD /* Player.swift */; };
+		2F5C14722CD2E39B00123712 /* Snap.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2F5C14712CD2E39B00123712 /* Snap.mp3 */; };
 		2F7325C62C9CE0E300DC0E51 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7325C52C9CE0E300DC0E51 /* MenuViewController.swift */; };
 		2F93F63A2CAB3B3500DAA47B /* Notes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2F93F6392CAB3B3500DAA47B /* Notes.txt */; };
 		2FC45A8B2CA8AEAA0040D84C /* RulesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC45A8A2CA8AEAA0040D84C /* RulesViewController.swift */; };
 		2FC748182CD179C400EF4ACC /* RollDice.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2FC748172CD179C300EF4ACC /* RollDice.mp3 */; };
 		2FC7481A2CD179CE00EF4ACC /* Score.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2FC748192CD179CE00EF4ACC /* Score.mp3 */; };
 		2FC7481C2CD179D700EF4ACC /* GameOver.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2FC7481B2CD179D700EF4ACC /* GameOver.mp3 */; };
-		2FC748382CD2A71B00EF4ACC /* Snap.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 2FC748372CD2A71B00EF4ACC /* Snap.m4a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,13 +33,13 @@
 		2F4C87CC2C9BC649001D3BCD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2F4C87CE2C9BC649001D3BCD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2F4C87D42C9BC6E3001D3BCD /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		2F5C14712CD2E39B00123712 /* Snap.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Snap.mp3; sourceTree = "<group>"; };
 		2F7325C52C9CE0E300DC0E51 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		2F93F6392CAB3B3500DAA47B /* Notes.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Notes.txt; sourceTree = "<group>"; };
 		2FC45A8A2CA8AEAA0040D84C /* RulesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesViewController.swift; sourceTree = "<group>"; };
 		2FC748172CD179C300EF4ACC /* RollDice.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = RollDice.mp3; sourceTree = "<group>"; };
 		2FC748192CD179CE00EF4ACC /* Score.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Score.mp3; sourceTree = "<group>"; };
 		2FC7481B2CD179D700EF4ACC /* GameOver.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = GameOver.mp3; sourceTree = "<group>"; };
-		2FC748372CD2A71B00EF4ACC /* Snap.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Snap.m4a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,7 +86,7 @@
 				2FC748172CD179C300EF4ACC /* RollDice.mp3 */,
 				2FC748192CD179CE00EF4ACC /* Score.mp3 */,
 				2FC7481B2CD179D700EF4ACC /* GameOver.mp3 */,
-				2FC748372CD2A71B00EF4ACC /* Snap.m4a */,
+				2F5C14712CD2E39B00123712 /* Snap.mp3 */,
 			);
 			path = Yahtzee;
 			sourceTree = "<group>";
@@ -149,6 +149,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F5C14722CD2E39B00123712 /* Snap.mp3 in Resources */,
 				2F93F63A2CAB3B3500DAA47B /* Notes.txt in Resources */,
 				2FC7481C2CD179D700EF4ACC /* GameOver.mp3 in Resources */,
 				2F4C87CA2C9BC649001D3BCD /* Assets.xcassets in Resources */,
@@ -156,7 +157,6 @@
 				2FC7481A2CD179CE00EF4ACC /* Score.mp3 in Resources */,
 				2F4C87C82C9BC647001D3BCD /* Base in Resources */,
 				2FC748182CD179C400EF4ACC /* RollDice.mp3 in Resources */,
-				2FC748382CD2A71B00EF4ACC /* Snap.m4a in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

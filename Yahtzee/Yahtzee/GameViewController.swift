@@ -300,7 +300,14 @@ class GameViewController: UIViewController {
         
         for i in 0...4 {
             if !player.diceRack[i].isLocked {
-                player.diceRack[i].value = Int.random(in: 1...6)
+                player.diceRack[i].value = Int.random(in: 1...6) // CHANGED FOR TESTING DBL YAHTZEE
+                // start test
+                
+//                player.diceRack[i].value = 5 // TAKE OUT AFTER DBL YAHTZEE TEST
+//                if player.turnCount == 0 {
+//                    player.diceRack[0].value = 1
+//                }
+//                // end test
                 diceButtons[i].setImage(UIImage(systemName: "die.face.\(player.diceRack[i].value)"), for: .normal)
             }
         }
@@ -503,21 +510,54 @@ class GameViewController: UIViewController {
         
         // yahtzee - might need to adjust isActive based on 2nd yahtzee
         
-        if player.lowerScoring[5].isActive {
-            if onesValue == 5 || twosValue == 10 || threesValue == 15 || foursValue == 20 || fivesValue == 25 || sixesValue == 30 {
+        if onesValue == 5 || twosValue == 10 || threesValue == 15 || foursValue == 20 || fivesValue == 25 || sixesValue == 30 {
+            
+            // if first yathzee, else bonus yahtzees
+            
+            if player.lowerScoring[5].isActive {
                 player.lowerScoring[5].value = 50
             }
-        }
-        
-        // chance
-        
-        if player.lowerScoring[6].isActive {
-            player.lowerScoring[6].value = totalValue
+            else {
+                player.hasBonusYahtzee = true
+                
+                let diceNum = player.diceRack[0].value
+                
+                // check if top spot is filled or not - display bottom values if is filled
+                
+                if !player.upperScoring[diceNum - 1].isActive {
+                    if player.lowerScoring[2].isActive {
+                        player.lowerScoring[2].value = 25
+                    }
+                    if player.lowerScoring[3].isActive {
+                        player.lowerScoring[3].value = 30
+                    }
+                    if player.lowerScoring[4].isActive {
+                        player.lowerScoring[4].value = 40
+                    }
+                }
+                else { // if top spot is not filled, take away rest of bottom value options
+                    if player.lowerScoring[0].isActive {
+                        player.lowerScoring[0].value = 0
+                    }
+                    if player.lowerScoring[1].isActive {
+                        player.lowerScoring[1].value = 0
+                    }
+                    if player.lowerScoring[6].isActive {
+                        player.lowerScoring[6].value = 0
+                    }
+                }
+            }
+            
+            // chance
+            
+            if player.lowerScoring[6].isActive {
+                player.lowerScoring[6].value = totalValue
+            }
         }
         
         // more funcs for stuff?
     
-        updateScoreButtons()
+        updateScoreButtons() // maybe call this just after this func, not here?
         
         // print(player.upperScoring)
         // print(player.lowerScoring)
@@ -545,11 +585,19 @@ class GameViewController: UIViewController {
             player.lowerScoring[index].isActive = false
         }
         
+        // check for double yahtzee here?
+        
+        if player.hasBonusYahtzee {
+            if player.lowerScoring[5].value >= 50 {
+                player.lowerScoring[5].value += 100
+                player.totalScore += 100
+            }
+            
+            player.hasBonusYahtzee = false
+        }
+        
         totalScoreLabel.text = String(player.totalScore)
         // scoreButton.tintColor = .green // do default once scored? take out here
-        
-        
-        // check for double yahtzee here?
         
         // clear out boxes not scored yet - keep here v somewhere else?
         

@@ -31,7 +31,7 @@ struct Player {
     var totalScore = 0
     var upperScore = 0
     var bonusActive = true
-    var hasYahtzee = false
+    var hasBonusYahtzee = false // maybe put in other file? or diff name?
 }
 
 struct ScoreBox {

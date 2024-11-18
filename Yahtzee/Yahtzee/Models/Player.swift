@@ -16,15 +16,15 @@ struct Player {
     
     // dice
     
-    var diceRack = [Dice(), Dice(), Dice(), Dice(), Dice()]
+    var diceRack = (0..<5).map { _ in Dice() }
     
     // upper scoring - 1's, 2's, 3's, 4's, 5's, 6's, bonus
     
-    var upperScoring = [ScoreBox(), ScoreBox(), ScoreBox(), ScoreBox(), ScoreBox(), ScoreBox(), ScoreBox()]
+    var upperScoring = (0..<7).map { _ in ScoreBox() }
     
     // lower scoring - 3X, 4X, full house, sm straight, lg straight, yahtzee, chance
     
-    var lowerScoring = [ScoreBox(), ScoreBox(), ScoreBox(), ScoreBox(), ScoreBox(), ScoreBox(), ScoreBox()]
+    var lowerScoring = (0..<7).map { _ in ScoreBox() }
     
     // scoring + score modifiers
     

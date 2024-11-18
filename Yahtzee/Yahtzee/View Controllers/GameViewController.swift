@@ -255,18 +255,17 @@ class GameViewController: UIViewController {
     }
     
     // do these in ext for sound stuff? take prints out?
-    // Helper function to load a sound by name and type
+   
     func loadSound(name: String, type: String) {
         if let soundURL = Bundle.main.url(forResource: name, withExtension: type) {
             var soundID: SystemSoundID = 0
             AudioServicesCreateSystemSoundID(soundURL as CFURL, &soundID)
-            soundIDs[name] = soundID  // Store in the dictionary
+            soundIDs[name] = soundID
         } else {
             print("Failed to load sound: \(name).\(type)")
         }
     }
 
-    // Function to play a sound by name
     func playSound(named name: String) {
         if let soundID = soundIDs[name] {
             AudioServicesPlaySystemSound(soundID)
@@ -372,16 +371,9 @@ class GameViewController: UIViewController {
 //        }
     }
     
-    func updateDiceButton(diceButton: UIButton, index: Int) {  // diff name?
+    func updateDiceButton(diceButton: UIButton, index: Int) {
         player.diceRack[index].isLocked.toggle()
-        
-        if diceButton.tintColor == .black {
-            diceButton.tintColor = .red
-        }
-        else {
-            diceButton.tintColor = .black
-        }
-        
+        diceButton.tintColor = player.diceRack[index].isLocked ? .red : .black
         playSound(named: "Snap")
     }
     

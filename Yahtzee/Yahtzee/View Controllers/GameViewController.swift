@@ -547,12 +547,12 @@ class GameViewController: UIViewController {
                     }
                 }
             }
-            
-            // chance
-            
-            if player.lowerScoring[6].isActive {
-                player.lowerScoring[6].value = totalValue
-            }
+        }
+        
+        // chance
+        
+        if player.lowerScoring[6].isActive {
+            player.lowerScoring[6].value = totalValue
         }
         
         // more funcs for stuff?

@@ -254,26 +254,24 @@ class GameViewController: UIViewController {
         }
     }
     
-// ABOVE GOOD
-    
-    func checkAllDiceLocked() -> Bool { // check if all dice are locked - might be incomplete?
-        for i in 0...4 { // this n more stuff as sep funcs? return bool?
-            if player.diceRack[i].isLocked {
-                if i < 4 { // maybe only check below?
-                    continue
-                }
-                else {
-                    turnInfoLabel.text = "Unlock a dice to roll again!" // diff say?
-                    return true
-                }
-            }
-            else {
-                break
+    func checkAllDiceLocked() -> Bool {
+        for dice in player.diceRack {
+            if !dice.isLocked {
+                return false
             }
         }
         
-        return false
+        turnInfoLabel.text = "Unlock a dice to roll again!" // diff say? die singular?
+        return true
     }
+    
+    func updateDiceButton(diceButton: UIButton, index: Int) {
+        player.diceRack[index].isLocked.toggle()
+        diceButton.tintColor = player.diceRack[index].isLocked ? .red : .black
+        playSound(named: "Snap")
+    }
+    
+// ABOVE GOOD
     
     func disableButtons() {
         for diceButton in diceButtons { // put these into func, 2 places call
@@ -311,12 +309,6 @@ class GameViewController: UIViewController {
 //        for lowerScoreButton in lowerScoreButtons {
 //            lowerScoreButton.isEnabled = true // only if not locked? or taken care of? do i even need locks or just disable? still use locks for score calc?
 //        }
-    }
-    
-    func updateDiceButton(diceButton: UIButton, index: Int) {
-        player.diceRack[index].isLocked.toggle()
-        diceButton.tintColor = player.diceRack[index].isLocked ? .red : .black
-        playSound(named: "Snap")
     }
     
     func rollDice() { // reorder n put stuff into funcs - combine funcs if can, any diff order?

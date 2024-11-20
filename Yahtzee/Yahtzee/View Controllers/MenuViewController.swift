@@ -21,7 +21,6 @@ class MenuViewController: UIViewController, GameViewControllerDelegate {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // do like if destination = game vc?
         if let gameViewController = segue.destination as? GameViewController {
             gameViewController.delegate = self
         }
@@ -38,7 +37,6 @@ class MenuViewController: UIViewController, GameViewControllerDelegate {
     
     private func UpdateScore() {
         let defaults = UserDefaults.standard
-        //defaults.set(0, forKey: "HighScore")
         highScore = defaults.integer(forKey: "HighScore")
         highScoreLabel.text = String(highScore)
     }

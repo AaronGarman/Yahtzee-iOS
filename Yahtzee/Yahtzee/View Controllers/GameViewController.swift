@@ -14,20 +14,6 @@ protocol GameViewControllerDelegate: AnyObject {
 
 class GameViewController: UIViewController {
     
-    var player = Player()
-    
-    var soundIDs: [String: SystemSoundID] = [:]
-    
-    weak var delegate: GameViewControllerDelegate?
-    
-    // score buttons for looping style changes
-    
-    var diceButtons: [UIButton] = []
-    var upperScoreLabels: [UILabel] = []
-    var upperScoreButtons: [UIButton] = [] // init here v init func? would buttons even be ready in init?
-    var lowerScoreLabels: [UILabel] = []
-    var lowerScoreButtons: [UIButton] = []
-    
     // dice buttons
     
     @IBOutlet weak var diceOneButton: UIButton!
@@ -54,7 +40,7 @@ class GameViewController: UIViewController {
     @IBOutlet weak var foursButton: UIButton!
     @IBOutlet weak var fivesButton: UIButton!
     @IBOutlet weak var sixesButton: UIButton!
-    @IBOutlet weak var bonusButton: UIButton! // disabled or as label? keep button so same styling?
+    @IBOutlet weak var bonusButton: UIButton!
     
     // lower scoring labels
     
@@ -83,31 +69,23 @@ class GameViewController: UIViewController {
     
     @IBOutlet weak var rollDicebutton: UIButton!
     
+    // score buttons for looping style changes
+    
+    var diceButtons: [UIButton] = []
+    var upperScoreLabels: [UILabel] = []
+    var upperScoreButtons: [UIButton] = []
+    var lowerScoreLabels: [UILabel] = []
+    var lowerScoreButtons: [UIButton] = []
+    
+    var player = Player()
+    var soundIDs: [String: SystemSoundID] = [:]
+    
+    // delegate to update score in main menu
+    
+    weak var delegate: GameViewControllerDelegate?
     
     @IBAction func didTapNewGameButton(_ sender: Any) {
         showNewGameAlert()
-    }
-    
-    func startNewGame() { // order matter? any to funcs? any missing? make func called reset game? call on game start?
-        player = Player()
-        
-        for i in 0...6 {
-            upperScoreButtons[i].isEnabled = false
-            lowerScoreButtons[i].isEnabled = false
-            
-            upperScoreButtons[i].backgroundColor = .white
-            lowerScoreButtons[i].backgroundColor = .white
-            upperScoreButtons[i].setTitleColor(.systemGray3, for: .disabled)
-            lowerScoreButtons[i].setTitleColor(.systemGray3, for: .disabled)
-        }
-        
-        disableButtons()
-        resetDice()
-        resetScores()
-        updateScoreButtons()
-        rollDicebutton.isEnabled = true
-        turnInfoLabel.text = "Roll the dice to start the game!"
-        totalScoreLabel.text = "0"
     }
     
     @IBAction func didTapRollButton(_ sender: UIButton) {
@@ -208,53 +186,55 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        bonusButton.isEnabled = false
+        initBoard()
+        initSounds()
+    }
+    
+    deinit {
+        // Clean up sound IDs to release resources
+        
+        for (_, soundID) in soundIDs {
+            AudioServicesDisposeSystemSoundID(soundID)
+        }
+    }
+    
+    func initBoard() {
+        
+        // group elements together for modifying
         
         diceButtons = [diceOneButton, diceTwoButton, diceThreeButton, diceFourButton, diceFiveButton]
+        
         upperScoreButtons = [onesButton, twosButton, threesButton, foursButton, fivesButton, sixesButton, bonusButton]
         lowerScoreButtons = [threeOfKindButton, fourOfKindButton, fullHouseButton, smallStraightButton, largeStraightButton, yahtzeeButton, chanceButton]
         
         upperScoreLabels = [onesLabel, twosLabel, threesLabel, foursLabel, fivesLabel, sixesLabel, bonusLabel]
         lowerScoreLabels = [threeOfKindLabel, fourOfKindLabel, fullHouseLabel, smallStraightLabel, largeStraightLabel, yahtzeeLabel, chanceLabel]
         
+        // draw border for all buttons & labels
+        
+        for i in 0..<7 {
+            drawBorder(for: upperScoreButtons[i].layer)
+            drawBorder(for: lowerScoreButtons[i].layer)
+            drawBorder(for: upperScoreLabels[i].layer)
+            drawBorder(for: lowerScoreLabels[i].layer)
+        }
+        
+        // disable buttons until game starts
+        
         disableButtons()
-        
-        for button in upperScoreButtons { // put as func? or use i n do one loop?
-            button.layer.borderWidth = 1
-            button.layer.borderColor = UIColor.black.cgColor
-            //button.backgroundColor = .green
-        }
-        
-        for button in lowerScoreButtons {
-            button.layer.borderWidth = 1
-            button.layer.borderColor = UIColor.black.cgColor
-        }
-        
-        for label in upperScoreLabels {
-            label.layer.borderWidth = 1
-            label.layer.borderColor = UIColor.black.cgColor
-        }
-        
-        for label in lowerScoreLabels {
-            label.layer.borderWidth = 1
-            label.layer.borderColor = UIColor.black.cgColor
-        }
-        
-        // take any out here n side panel that no use
-        loadSound(name: "RollDice", type: "mp3") // abc order here n left? folders for files too? fig 2 types?
-        loadSound(name: "Score", type: "mp3")
+    }
+    
+    func drawBorder(for layer: CALayer) {
+        layer.borderWidth = 1
+        layer.borderColor = UIColor.black.cgColor
+    }
+    
+    func initSounds() {
         loadSound(name: "GameOver", type: "mp3")
+        loadSound(name: "RollDice", type: "mp3")
+        loadSound(name: "Score", type: "mp3")
         loadSound(name: "Snap", type: "mp3")
     }
-    
-    deinit {
-        // Clean up sound IDs to release resources
-        for (_, soundID) in soundIDs {
-            AudioServicesDisposeSystemSoundID(soundID)
-        }
-    }
-    
-    // do these in ext for sound stuff? take prints out?
    
     func loadSound(name: String, type: String) {
         if let soundURL = Bundle.main.url(forResource: name, withExtension: type) {
@@ -274,57 +254,7 @@ class GameViewController: UIViewController {
         }
     }
     
-    func disableButtons() {
-        for diceButton in diceButtons { // put these into func, 2 places call
-            diceButton.isEnabled = false
-        }
-        
-        for upperScoreButton in upperScoreButtons { // only lock if not already locked? or no need check?
-            upperScoreButton.isEnabled = false
-        }
-        
-        for lowerScoreButton in lowerScoreButtons {
-            lowerScoreButton.isEnabled = false
-        }
-    }
-
-    func rollDice() { // reorder n put stuff into funcs - combine funcs if can, any diff order?
-        guard !checkAllDiceLocked() else { return } // check all dice locked
-        resetScores() // reset scores to 0 if not scored - right? clear at start of roll? in here also set all buttons to enabled?
-        resetButtons() // reset buttons as enabled once start first roll
-        
-        player.rollCount += 1
-        
-        // give each dice new value and image
-        
-        for i in 0...4 {
-            if !player.diceRack[i].isLocked {
-                player.diceRack[i].value = Int.random(in: 1...6) // CHANGED FOR TESTING DBL YAHTZEE
-                // start test
-                
-//                player.diceRack[i].value = 5 // TAKE OUT AFTER DBL YAHTZEE TEST
-//                if player.turnCount == 0 {
-//                    player.diceRack[0].value = 1
-//                }
-//                // end test
-                diceButtons[i].setImage(UIImage(systemName: "die.face.\(player.diceRack[i].value)"), for: .normal)
-            }
-        }
-        
-        // update turn info - check if last roll in turn
-        
-        if player.rollCount == 3 {
-            rollDicebutton.isEnabled = false
-            turnInfoLabel.text = "Select a move to score!"
-        }
-        else {
-            turnInfoLabel.text = "Roll the dice, or score a move!"
-        }
-        
-        playSound(named: "RollDice")
-        
-        // print(player.diceRack)
-    }
+// ABOVE GOOD
     
     func checkAllDiceLocked() -> Bool { // check if all dice are locked - might be incomplete?
         for i in 0...4 { // this n more stuff as sep funcs? return bool?
@@ -345,9 +275,21 @@ class GameViewController: UIViewController {
         return false
     }
     
+    func disableButtons() {
+        for diceButton in diceButtons { // put these into func, 2 places call
+            diceButton.isEnabled = false
+        }
+        
+        for upperScoreButton in upperScoreButtons { // only lock if not already locked? or no need check?
+            upperScoreButton.isEnabled = false
+        }
+        
+        for lowerScoreButton in lowerScoreButtons {
+            lowerScoreButton.isEnabled = false
+        }
+    }
+    
     func resetButtons() {
-        guard player.rollCount == 0 else { return } // this here or do if above?
-                
         for diceButton in diceButtons {
             diceButton.isEnabled = true
         }
@@ -375,6 +317,43 @@ class GameViewController: UIViewController {
         player.diceRack[index].isLocked.toggle()
         diceButton.tintColor = player.diceRack[index].isLocked ? .red : .black
         playSound(named: "Snap")
+    }
+    
+    func rollDice() { // reorder n put stuff into funcs - combine funcs if can, any diff order?
+        guard !checkAllDiceLocked() else { return } // check all dice locked
+#warning ("check these 2 funcs")
+        resetScores() // reset scores to 0 if not scored - right? clear at start of roll? in here also set all buttons to enabled?
+        
+        // reset buttons as enabled once start first roll
+        
+        if player.rollCount == 0 {
+            resetButtons()
+        }
+        
+        // give each dice new value and image
+        
+        for i in 0...4 {
+            if !player.diceRack[i].isLocked {
+                player.diceRack[i].value = Int.random(in: 1...6)
+                diceButtons[i].setImage(UIImage(systemName: "die.face.\(player.diceRack[i].value)"), for: .normal)
+            }
+        }
+        
+        // maybe keep bonus as disabled until scored?
+        
+        // update turn info - check if last roll in turn
+        
+        player.rollCount += 1
+        
+        if player.rollCount < 3 {
+            turnInfoLabel.text = "Roll the dice, or score a move!"
+        }
+        else {
+            rollDicebutton.isEnabled = false
+            turnInfoLabel.text = "Select a move to score!"
+        }
+        
+        playSound(named: "RollDice")
     }
     
     func updateScores() {
@@ -555,13 +534,6 @@ class GameViewController: UIViewController {
         // print(player.lowerScoring)
     }
     
-    func updateScoreButtons() {
-        for i in 0...6 {
-            upperScoreButtons[i].setTitle(String(player.upperScoring[i].value), for: .normal)
-            lowerScoreButtons[i].setTitle(String(player.lowerScoring[i].value), for: .normal)
-        }
-    }
-    
     // diff name? addInScore
     func addScore(scoreButton: UIButton, index: Int, isUpper: Bool) { // put stuff in order, any to above? if do above if even need? just disable? if no disable keep here so only write once? do as guard let? either do bool or do 14 array
 
@@ -632,9 +604,9 @@ class GameViewController: UIViewController {
         
     }
     
-    func addBonus() {
+    func addBonus() { // any of this diff by reordering above func?
         player.upperScoring[6].value = 35
-        upperScoreButtons[6].setTitle(String(player.upperScoring[6].value), for: .normal)
+        upperScoreButtons[6].setTitle(String(player.upperScoring[6].value), for: .normal) // need?
         player.totalScore += 35
         totalScoreLabel.text = String(player.totalScore) // do this later so no need?
         upperScoreButtons[6].isEnabled = false // no need? if change styling tho, do as sep class? or somethin diff?
@@ -644,14 +616,15 @@ class GameViewController: UIViewController {
         upperScoreButtons[6].backgroundColor = .green
         upperScoreButtons[6].setTitleColor(.black, for: .disabled)
     }
+//  BELOW GOOD
     
     func endGame() {
         
         // disable roll button since no more turns
         
-        rollDicebutton.isEnabled = false // need all these?
+        rollDicebutton.isEnabled = false
         
-        // update high score - do as func?
+        // update high score
         
         let defaults = UserDefaults.standard // def this as func
         let oldHighScore = defaults.integer(forKey: "HighScore")
@@ -659,9 +632,16 @@ class GameViewController: UIViewController {
             defaults.set(player.totalScore, forKey: "HighScore")
         }
         
-        delegate?.gameDidEnd()
+        // call delegate function to update score on main menu
         
-        // show reset button n enable? or use dice button n change color?
+        delegate?.gameDidEnd()
+    }
+    
+    func updateScoreButtons() {
+        for i in 0...6 {
+            upperScoreButtons[i].setTitle(String(player.upperScoring[i].value), for: .normal)
+            lowerScoreButtons[i].setTitle(String(player.lowerScoring[i].value), for: .normal)
+        }
     }
     
     func resetScores() {
@@ -676,46 +656,49 @@ class GameViewController: UIViewController {
         }
     }
     
-    func resetDice() { // could possibly put this into func that calls it?
+    func resetDice() {
         for i in 0...4 {
             diceButtons[i].setImage(UIImage(systemName: "die.face.1"), for: .normal)
             diceButtons[i].tintColor = .black
-            
             player.diceRack[i].isLocked = false
         }
     }
     
-    func showNewGameAlert() { // vars n funcs private?
+    func startNewGame() { // order matter? any to funcs? any missing? make func called reset game? call on game start?
+        player = Player()
+        
+        for i in 0...6 {
+            upperScoreButtons[i].isEnabled = false
+            lowerScoreButtons[i].isEnabled = false
+            
+            upperScoreButtons[i].backgroundColor = .white
+            lowerScoreButtons[i].backgroundColor = .white
+            upperScoreButtons[i].setTitleColor(.systemGray3, for: .disabled)
+            lowerScoreButtons[i].setTitleColor(.systemGray3, for: .disabled)
+        }
+        
+        disableButtons()
+        resetDice()
+        resetScores()
+        updateScoreButtons()
+        rollDicebutton.isEnabled = true
+        turnInfoLabel.text = "Roll the dice to start the game!"
+        totalScoreLabel.text = "0"
+    }
+    
+    func showNewGameAlert() {
         let alertController = UIAlertController(
             title: "Start New Game?",
             message: "Your current progress for this game will be lost.",
-            preferredStyle: .alert) // caps need?
+            preferredStyle: .alert)
 
         let cancelAction = UIAlertAction(title: "Cancel", style: .default)
         alertController.addAction(cancelAction)
         let okAction = UIAlertAction(title: "Yes", style: .default) { _ in
-            self.startNewGame()  // Call the restart function here
-        } // maybe make yes?
+            self.startNewGame()
+        }
         alertController.addAction(okAction)
 
         present(alertController, animated: true)
     }
 }
-
-// maybe ext func here to print all values?
-
-// clear out comments + put comments in, clean up
-// maybe disabled tint keep same as black? https://stackoverflow.com/questions/45834966/uibutton-tintcolor-for-disabled-and-enabled-state/45835079#45835079
-// for buttons class could also do green background when disabled? still need locks for scoring or others?
-
-// mainly just 2 button handlers?
-// any func stuff in diff orders? mainly for 2 last handlers?
-
-// more stuff as funcs*** combine any funcs too? focus roll n score funcs flow
-// redorder any logic? espec for roll and score handlers
-
-// org n optimize all here + compare w/ java code + add in double yahtzee
-
-// how update score in main menu? closure or delegate prob
-
-// logical order for all funcs?

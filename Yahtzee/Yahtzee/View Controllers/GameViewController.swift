@@ -511,13 +511,13 @@ class GameViewController: UIViewController {
  
 // ABOVE GOOD
     
-    // diff name? addInScore
-    func addScore(scoreButton: UIButton, index: Int, isUpper: Bool) { // put stuff in order, any to above? if do above if even need? just disable? if no disable keep here so only write once? do as guard let? either do bool or do 14 array
-
-        if isUpper { // any way combine upper n lower?
-            guard player.upperScoring[index].isActive else { return } // maybe no need here or below?
+    func addScore(scoreButton: UIButton, index: Int, isUpper: Bool) {
+        // add score to total - upper also adds for bonus calc
+        
+        if isUpper {
+            guard player.upperScoring[index].isActive else { return }
             player.totalScore += player.upperScoring[index].value
-            player.upperScore += player.upperScoring[index].value // for upper bonus
+            player.upperScore += player.upperScoring[index].value
             player.upperScoring[index].isActive = false
         }
         else {
@@ -526,7 +526,7 @@ class GameViewController: UIViewController {
             player.lowerScoring[index].isActive = false
         }
         
-        // check for double yahtzee here?
+        // handle bonus yahtzees
         
         if player.hasBonusYahtzee {
             if player.lowerScoring[5].value >= 50 {
@@ -537,37 +537,30 @@ class GameViewController: UIViewController {
             player.hasBonusYahtzee = false
         }
         
-        totalScoreLabel.text = String(player.totalScore)
-        // scoreButton.tintColor = .green // do default once scored? take out here
+        if player.upperScore >= 63 && player.bonusActive {
+            addBonus()
+        }
         
-        // clear out boxes not scored yet - keep here v somewhere else?
+        totalScoreLabel.text = String(player.totalScore)
+        
+        scoreButton.backgroundColor = .green
+        scoreButton.setTitleColor(.black, for: .disabled)
+        
+        // reset scores + dice for next turn
         
         resetScores()
         updateScoreButtons() // maybe call in reset scores?
-        
-        //scoreButton.isEnabled = false // disable - phsycial or from class data?
-        
-        // lock if all 5 dice locked, no roll? bool?
-        
         resetDice()
         
-        // disable dice until roll?
-        
-        rollDicebutton.isEnabled = true // put this into func? below too
+        rollDicebutton.isEnabled = true
         player.rollCount = 0
         player.turnCount += 1
         
         disableButtons()
         
-        // need actual add to top score - some stuff no need if rearrange, like adding n labels
-        
-        if player.upperScore >= 63 && player.bonusActive {
-            addBonus()
-        }
-        
         if player.turnCount == 13 {
             endGame()
-            turnInfoLabel.text = ("Game Over! Click New Game to play again!") // diff?
+            turnInfoLabel.text = ("Game Over! Click New Game to play again!")
             playSound(named: "GameOver")
         }
         else {
@@ -575,28 +568,24 @@ class GameViewController: UIViewController {
             playSound(named: "Score")
         }
         
-        // put these above any?
-        scoreButton.backgroundColor = .green
-        scoreButton.setTitleColor(.black, for: .disabled)
-        
         // any funcs in here call after?
-        
+        // put stuff in order, any to above? if do above if even need? just disable? if no disable keep here so only write once? do as guard let? either do bool or do 14 array
+        // any way combine upper n lower? at top
+        // maybe no need here or below? for 2 guards
+        // any stuff here into funcs? dice stuff?
     }
     
-    func addBonus() { // any of this diff by reordering above func?
+//  BELOW GOOD
+    
+    func addBonus() {
         player.upperScoring[6].value = 35
-        upperScoreButtons[6].setTitle(String(player.upperScoring[6].value), for: .normal) // need?
         player.totalScore += 35
-        totalScoreLabel.text = String(player.totalScore) // do this later so no need?
-        upperScoreButtons[6].isEnabled = false // no need? if change styling tho, do as sep class? or somethin diff?
         player.bonusActive = false
         player.upperScoring[6].isActive = false
         
         upperScoreButtons[6].backgroundColor = .green
         upperScoreButtons[6].setTitleColor(.black, for: .disabled)
     }
-    
-//  BELOW GOOD
     
     func endGame() {
         
@@ -644,7 +633,7 @@ class GameViewController: UIViewController {
         }
     }
     
-    func startNewGame() { // order matter? any to funcs? any missing? make func called reset game? call on game start?
+    func startNewGame() {
         player = Player()
         
         for i in 0...6 {
@@ -661,6 +650,7 @@ class GameViewController: UIViewController {
         resetDice()
         resetScores()
         updateScoreButtons()
+        
         rollDicebutton.isEnabled = true
         turnInfoLabel.text = "Roll the dice to start the game!"
         totalScoreLabel.text = "0"

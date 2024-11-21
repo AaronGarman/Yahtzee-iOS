@@ -91,7 +91,6 @@ class GameViewController: UIViewController {
     @IBAction func didTapRollButton(_ sender: UIButton) {
         rollDice()
         updateScores()
-        updateScoreButtons()
     }
     
     @IBAction func didTapDiceButton(_ sender: UIButton) {
@@ -299,12 +298,12 @@ class GameViewController: UIViewController {
         }
     }
     
-// ABOVE GOOD
-    
-    func rollDice() { // reorder n put stuff into funcs - combine funcs if can, any diff order?
-        guard !checkAllDiceLocked() else { return } // check all dice locked
-#warning ("check these 2 funcs")
-        resetScores() // reset scores to 0 if not scored - right? clear at start of roll? in here also set all buttons to enabled?
+    func rollDice() {
+        guard !checkAllDiceLocked() else { return }
+        
+        // 0 out all scores
+        
+        resetScores()
         
         // reset buttons as enabled once start first roll
         
@@ -321,8 +320,6 @@ class GameViewController: UIViewController {
             }
         }
         
-        // maybe keep bonus as disabled until scored?
-        
         // update turn info - check if last roll in turn
         
         player.rollCount += 1
@@ -337,6 +334,8 @@ class GameViewController: UIViewController {
         
         playSound(named: "RollDice")
     }
+    
+// ABOVE GOOD
     
     func updateScores() {
         
@@ -509,6 +508,10 @@ class GameViewController: UIViewController {
         }
         
         // more funcs for stuff?
+        
+        // update buttons to reflect changes
+        
+        updateScoreButtons()
     }
     
     // diff name? addInScore

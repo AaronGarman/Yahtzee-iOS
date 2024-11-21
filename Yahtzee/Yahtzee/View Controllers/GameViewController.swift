@@ -335,12 +335,9 @@ class GameViewController: UIViewController {
         playSound(named: "RollDice")
     }
     
-// ABOVE GOOD
-    
     func updateScores() {
         
-        // total value for all current dice - could do values on outside n do upper n lower scoring funcs? do as array?
-        // or calc here n pass in?
+        // total values for all current dice
         
         var onesValue = 0, twosValue = 0, threesValue = 0, foursValue = 0, fivesValue = 0, sixesValue = 0
         var totalValue = 0
@@ -460,7 +457,7 @@ class GameViewController: UIViewController {
             }
         }
         
-        // yahtzee - might need to adjust isActive based on 2nd yahtzee
+        // yahtzee
         
         if onesValue == 5 || twosValue == 10 || threesValue == 15 || foursValue == 20 || fivesValue == 25 || sixesValue == 30 {
             
@@ -507,12 +504,12 @@ class GameViewController: UIViewController {
             player.lowerScoring[6].value = totalValue
         }
         
-        // more funcs for stuff?
-        
         // update buttons to reflect changes
         
         updateScoreButtons()
     }
+ 
+// ABOVE GOOD
     
     // diff name? addInScore
     func addScore(scoreButton: UIButton, index: Int, isUpper: Bool) { // put stuff in order, any to above? if do above if even need? just disable? if no disable keep here so only write once? do as guard let? either do bool or do 14 array
@@ -598,6 +595,7 @@ class GameViewController: UIViewController {
         upperScoreButtons[6].backgroundColor = .green
         upperScoreButtons[6].setTitleColor(.black, for: .disabled)
     }
+    
 //  BELOW GOOD
     
     func endGame() {

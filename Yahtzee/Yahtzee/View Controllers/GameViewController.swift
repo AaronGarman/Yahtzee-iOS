@@ -91,6 +91,7 @@ class GameViewController: UIViewController {
     @IBAction func didTapRollButton(_ sender: UIButton) {
         rollDice()
         updateScores()
+        updateScoreButtons()
     }
     
     @IBAction func didTapDiceButton(_ sender: UIButton) {
@@ -271,45 +272,34 @@ class GameViewController: UIViewController {
         playSound(named: "Snap")
     }
     
-// ABOVE GOOD
-    
     func disableButtons() {
-        for diceButton in diceButtons { // put these into func, 2 places call
-            diceButton.isEnabled = false
-        }
-        
-        for upperScoreButton in upperScoreButtons { // only lock if not already locked? or no need check?
-            upperScoreButton.isEnabled = false
-        }
-        
-        for lowerScoreButton in lowerScoreButtons {
-            lowerScoreButton.isEnabled = false
+        for i in 0...6 {
+            upperScoreButtons[i].isEnabled = false
+            lowerScoreButtons[i].isEnabled = false
+            
+            if i <= 4 {
+                diceButtons[i].isEnabled = false
+            }
         }
     }
     
     func resetButtons() {
-        for diceButton in diceButtons {
-            diceButton.isEnabled = true
-        }
-        
         for i in 0...6 {
             if player.upperScoring[i].isActive {
-                upperScoreButtons[i].isEnabled = true // only if not locked? or taken care of? do i even need locks or just disable? still use locks for score calc?
+                upperScoreButtons[i].isEnabled = true
             }
             
             if player.lowerScoring[i].isActive {
-                lowerScoreButtons[i].isEnabled = true // only if not locked? or taken care of? do i even need locks or just disable? still use locks for score calc?
+                lowerScoreButtons[i].isEnabled = true
+            }
+            
+            if i <= 4 {
+                diceButtons[i].isEnabled = true
             }
         }
-        
-//        for upperScoreButton in upperScoreButtons {
-//            upperScoreButton.isEnabled = true // only if not locked? or taken care of? do i even need locks or just disable? still use locks for score calc?
-//        }
-//        
-//        for lowerScoreButton in lowerScoreButtons {
-//            lowerScoreButton.isEnabled = true // only if not locked? or taken care of? do i even need locks or just disable? still use locks for score calc?
-//        }
     }
+    
+// ABOVE GOOD
     
     func rollDice() { // reorder n put stuff into funcs - combine funcs if can, any diff order?
         guard !checkAllDiceLocked() else { return } // check all dice locked
@@ -519,11 +509,6 @@ class GameViewController: UIViewController {
         }
         
         // more funcs for stuff?
-    
-        updateScoreButtons() // maybe call this just after this func, not here?
-        
-        // print(player.upperScoring)
-        // print(player.lowerScoring)
     }
     
     // diff name? addInScore
@@ -593,6 +578,8 @@ class GameViewController: UIViewController {
         // put these above any?
         scoreButton.backgroundColor = .green
         scoreButton.setTitleColor(.black, for: .disabled)
+        
+        // any funcs in here call after?
         
     }
     

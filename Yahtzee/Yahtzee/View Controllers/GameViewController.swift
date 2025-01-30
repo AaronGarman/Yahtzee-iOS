@@ -8,6 +8,8 @@
 import UIKit
 import AudioToolbox
 
+// protocol to update score in main menu
+
 protocol GameViewControllerDelegate: AnyObject {
     func gameDidEnd()
 }
@@ -67,6 +69,8 @@ class GameViewController: UIViewController {
     @IBOutlet weak var turnInfoLabel: UILabel!
     @IBOutlet weak var totalScoreLabel: UILabel!
     
+    // action buttons
+    
     @IBOutlet weak var rollDicebutton: UIButton!
     
     // score buttons for looping style changes
@@ -77,21 +81,32 @@ class GameViewController: UIViewController {
     var lowerScoreLabels: [UILabel] = []
     var lowerScoreButtons: [UIButton] = []
     
+    // store player scoring information
+    
     var player = Player()
+    
+    // store sounds for button actions
+    
     var soundIDs: [String: SystemSoundID] = [:]
     
     // delegate to update score in main menu
     
     weak var delegate: GameViewControllerDelegate?
     
+    // end current game and start new game
+    
     @IBAction func didTapNewGameButton(_ sender: Any) {
         showNewGameAlert()
     }
+    
+    // roll dice
     
     @IBAction func didTapRollButton(_ sender: UIButton) {
         rollDice()
         updateScores()
     }
+    
+    // for locking/unlocking dice
     
     @IBAction func didTapDiceButton(_ sender: UIButton) {
         var index: Int?
@@ -119,6 +134,8 @@ class GameViewController: UIViewController {
             updateDiceButton(diceButton: sender, index: validIndex)
         }
     }
+    
+    // add in score from upper section
     
     @IBAction func didTapUpperScoreButton(_ sender: UIButton) {
         var index: Int?
@@ -149,6 +166,8 @@ class GameViewController: UIViewController {
             addScore(scoreButton: sender, index: validIndex, isUpper: true)
         }
     }
+    
+    // add in score from lower section
     
     @IBAction func didTapLowerScoreButton(_ sender: UIButton) {
         var index: Int?
@@ -191,8 +210,6 @@ class GameViewController: UIViewController {
     }
     
     deinit {
-        // Clean up sound IDs to release resources
-        
         for (_, soundID) in soundIDs {
             AudioServicesDisposeSystemSoundID(soundID)
         }
@@ -282,7 +299,7 @@ class GameViewController: UIViewController {
         }
     }
     
-    func resetButtons() {
+    func resetButtons() { // refactor to enable buttons? name
         for i in 0...6 {
             if player.upperScoring[i].isActive {
                 upperScoreButtons[i].isEnabled = true
@@ -546,7 +563,7 @@ class GameViewController: UIViewController {
         scoreButton.backgroundColor = .green
         scoreButton.setTitleColor(.black, for: .disabled)
         
-        // reset scores + dice for next turn
+        // reset scores + dice for next turn - func?
         
         resetScores()
         updateScoreButtons() // maybe call in reset scores?

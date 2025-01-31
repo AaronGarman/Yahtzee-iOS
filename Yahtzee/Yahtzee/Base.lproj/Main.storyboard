@@ -118,7 +118,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Score the most points by rolling five dice and filling in categories on a scorecard over 13 rounds." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="6qA-fl-69U">
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Score the most points by rolling five dice and filling in categories on a scorecard over 13 rounds." textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6qA-fl-69U">
                                                 <rect key="frame" x="0.0" y="28.666666666666671" width="393" height="63"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
@@ -139,7 +139,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="On your turn, roll five dice. You may re-roll any or all dice up to two more times (max 3 rolls per turn)." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Mhj-qg-hXv">
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="On your turn, roll five dice. You may re-roll any or all dice up to two more times (max 3 rolls per turn)." textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mhj-qg-hXv">
                                                 <rect key="frame" x="0.0" y="120.33333333333334" width="393" height="60"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
@@ -160,7 +160,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="After rolling, choose a score category to fill in. You must enter a score, even if it’s zero." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="P5U-Xn-lMT">
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="After rolling, choose a score category to fill in. You must enter a score, even if it’s zero." textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P5U-Xn-lMT">
                                                 <rect key="frame" x="0.0" y="209" width="393" height="57"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
@@ -181,7 +181,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="88M-yV-EYH">
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="88M-yV-EYH">
                                                 <rect key="frame" x="0.0" y="294.66666666666669" width="393" height="135"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
@@ -205,7 +205,7 @@ Lower Section: Special combinations (e.g., Full House, Yahtzee).</string>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="If your Upper Section total is 63 or more, you earn a 35-point bonus." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="kMu-hE-tSb">
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="If your Upper Section total is 63 or more, you earn a 35-point bonus." textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kMu-hE-tSb">
                                                 <rect key="frame" x="0.0" y="458.33333333333337" width="393" height="57"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
@@ -226,7 +226,7 @@ Lower Section: Special combinations (e.g., Full House, Yahtzee).</string>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="rS8-YV-0R8">
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rS8-YV-0R8">
                                                 <rect key="frame" x="0.0" y="544" width="393" height="211"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
@@ -254,7 +254,7 @@ Chance (Any Roll) – Sum of all dice.</string>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ZNT-PM-rtc">
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZNT-PM-rtc">
                                                 <rect key="frame" x="0.0" y="783.66666666666663" width="393" height="95"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
@@ -276,7 +276,7 @@ Chance (Any Roll) – Sum of all dice.</string>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="After 13 rounds, all scorecard spaces are filled. The score shown is now your final score!" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="3Ui-ho-ybr">
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="After 13 rounds, all scorecard spaces are filled. The score shown is now your final score!" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ui-ho-ybr">
                                                 <rect key="frame" x="0.0" y="907.33333333333337" width="393" height="57"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>

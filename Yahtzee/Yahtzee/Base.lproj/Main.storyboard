@@ -103,10 +103,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZKd-A7-2Hc">
-                                <rect key="frame" x="0.0" y="56" width="393" height="786"/>
+                                <rect key="frame" x="0.0" y="56" width="422.66666666666669" height="786"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="WWk-cv-gFC">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="964.33333333333337"/>
+                                        <rect key="frame" x="12" y="0.0" width="393" height="969.33333333333337"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Objective" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zZM-8h-04d" userLabel="Directions">
                                                 <rect key="frame" x="0.0" y="0.0" width="393" height="28.666666666666668"/>
@@ -140,18 +140,18 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="On your turn, roll five dice. You may re-roll any or all dice up to two more times (max 3 rolls per turn)." textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mhj-qg-hXv">
-                                                <rect key="frame" x="0.0" y="120.33333333333334" width="393" height="60"/>
+                                                <rect key="frame" x="0.0" y="120.33333333333334" width="393" height="65"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="393" id="img-nc-IrR"/>
-                                                    <constraint firstAttribute="height" constant="60" id="pGr-9N-mdf"/>
+                                                    <constraint firstAttribute="height" constant="65" id="pGr-9N-mdf"/>
                                                 </constraints>
                                                 <color key="textColor" systemColor="labelColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choosing a Category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mdA-b8-eoD" userLabel="Directions">
-                                                <rect key="frame" x="0.0" y="180.33333333333334" width="393" height="28.666666666666657"/>
+                                                <rect key="frame" x="0.0" y="185.33333333333334" width="393" height="28.666666666666657"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="28.670000000000002" id="HzN-Qk-HlP"/>
                                                     <constraint firstAttribute="width" constant="393" id="gVX-am-xD0"/>
@@ -161,7 +161,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="After rolling, choose a score category to fill in. You must enter a score, even if it’s zero." textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P5U-Xn-lMT">
-                                                <rect key="frame" x="0.0" y="209" width="393" height="57"/>
+                                                <rect key="frame" x="0.0" y="214" width="393" height="57"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="57" id="YOI-4a-5UE"/>
@@ -172,7 +172,7 @@
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scoring" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uV4-nd-cWR" userLabel="Directions">
-                                                <rect key="frame" x="0.0" y="266" width="393" height="28.666666666666686"/>
+                                                <rect key="frame" x="0.0" y="271" width="393" height="28.666666666666686"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="28.670000000000002" id="KJ8-I3-95m"/>
                                                     <constraint firstAttribute="width" constant="393" id="MYf-5f-QNC"/>
@@ -181,22 +181,22 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="88M-yV-EYH">
-                                                <rect key="frame" x="0.0" y="294.66666666666669" width="393" height="135"/>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="88M-yV-EYH">
+                                                <rect key="frame" x="0.0" y="299.66666666666669" width="393" height="135"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="135" id="PYP-Do-OKX"/>
                                                     <constraint firstAttribute="width" constant="393" id="j9u-bm-d8H"/>
                                                 </constraints>
                                                 <string key="text">The scorecard has an Upper Section and a Lower Section.
-Upper Section: Sum of matching dice (e.g., 3s = sum of all 3s).
-Lower Section: Special combinations (e.g., Full House, Yahtzee).</string>
+• Upper Section: Sum of matching dice (e.g., 3s = sum of all 3s).
+• Lower Section: Special combinations (e.g., Full House, Yahtzee).</string>
                                                 <color key="textColor" systemColor="labelColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Upper Section Bonus" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dnq-cq-xl8" userLabel="Directions">
-                                                <rect key="frame" x="0.0" y="429.66666666666669" width="393" height="28.666666666666686"/>
+                                                <rect key="frame" x="0.0" y="434.66666666666669" width="393" height="28.666666666666686"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="393" id="FL3-br-auX"/>
                                                     <constraint firstAttribute="height" constant="28.670000000000002" id="ar0-M5-Fba"/>
@@ -206,7 +206,7 @@ Lower Section: Special combinations (e.g., Full House, Yahtzee).</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="If your Upper Section total is 63 or more, you earn a 35-point bonus." textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kMu-hE-tSb">
-                                                <rect key="frame" x="0.0" y="458.33333333333337" width="393" height="57"/>
+                                                <rect key="frame" x="0.0" y="463.33333333333337" width="393" height="57"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="393" id="HvC-2s-CIC"/>
@@ -217,7 +217,7 @@ Lower Section: Special combinations (e.g., Full House, Yahtzee).</string>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lower Section Scoring" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QUS-AB-KoO" userLabel="Directions">
-                                                <rect key="frame" x="0.0" y="515.33333333333337" width="393" height="28.666666666666629"/>
+                                                <rect key="frame" x="0.0" y="520.33333333333337" width="393" height="28.666666666666629"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="28.670000000000002" id="Stj-Pj-zeq"/>
                                                     <constraint firstAttribute="width" constant="393" id="Uhd-TK-Zco"/>
@@ -227,25 +227,25 @@ Lower Section: Special combinations (e.g., Full House, Yahtzee).</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rS8-YV-0R8">
-                                                <rect key="frame" x="0.0" y="544" width="393" height="211"/>
+                                                <rect key="frame" x="0.0" y="549" width="393" height="211"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="211" id="YsS-eh-wIW"/>
                                                     <constraint firstAttribute="width" constant="393" id="ykm-Pj-RHJ"/>
                                                 </constraints>
-                                                <string key="text">Three of a Kind – Sum of all dice if 3+ match.
-Four of a Kind – Sum of all dice if 4+ match.
-Full House – 25 points (three of one number + two of another).
-Small Straight – 30 points (four consecutive numbers).
-Large Straight – 40 points (five consecutive numbers).
-Yahtzee (Five of a Kind) – 50 points.
-Chance (Any Roll) – Sum of all dice.</string>
+                                                <string key="text">• Three of a Kind – Sum of all dice if 3+ match.
+• Four of a Kind – Sum of all dice if 4+ match.
+• Full House – 25 points (three of one number + two of another).
+• Small Straight – 30 points (four consecutive numbers).
+• Large Straight – 40 points (five consecutive numbers).
+• Yahtzee (Five of a Kind) – 50 points.
+• Chance (Any Roll) – Sum of all dice.</string>
                                                 <color key="textColor" systemColor="labelColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Yahtzee Bonus" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rSL-q7-OIz" userLabel="Directions">
-                                                <rect key="frame" x="0.0" y="755" width="393" height="28.666666666666629"/>
+                                                <rect key="frame" x="0.0" y="760" width="393" height="28.666666666666629"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="393" id="0ES-gY-NIO"/>
                                                     <constraint firstAttribute="height" constant="28.670000000000002" id="d96-8v-pwq"/>
@@ -255,7 +255,7 @@ Chance (Any Roll) – Sum of all dice.</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZNT-PM-rtc">
-                                                <rect key="frame" x="0.0" y="783.66666666666663" width="393" height="95"/>
+                                                <rect key="frame" x="0.0" y="788.66666666666663" width="393" height="95"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="393" id="TwY-jy-0eJ"/>
@@ -267,7 +267,7 @@ Chance (Any Roll) – Sum of all dice.</string>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="End of Game" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZdW-og-lib" userLabel="Directions">
-                                                <rect key="frame" x="0.0" y="878.66666666666663" width="393" height="28.666666666666629"/>
+                                                <rect key="frame" x="0.0" y="883.66666666666663" width="393" height="28.666666666666629"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="393" id="HTk-f3-1uF"/>
                                                     <constraint firstAttribute="height" constant="28.670000000000002" id="gmJ-bb-P8W"/>
@@ -277,7 +277,7 @@ Chance (Any Roll) – Sum of all dice.</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="After 13 rounds, all scorecard spaces are filled. The score shown is now your final score!" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ui-ho-ybr">
-                                                <rect key="frame" x="0.0" y="907.33333333333337" width="393" height="57"/>
+                                                <rect key="frame" x="0.0" y="912.33333333333337" width="393" height="57"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="57" id="Bpd-fB-IY2"/>
@@ -292,9 +292,9 @@ Chance (Any Roll) – Sum of all dice.</string>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="WWk-cv-gFC" firstAttribute="top" secondItem="ZKd-A7-2Hc" secondAttribute="top" id="5nl-Rh-XPo"/>
-                                    <constraint firstItem="WWk-cv-gFC" firstAttribute="leading" secondItem="ZKd-A7-2Hc" secondAttribute="leading" id="GAo-xu-5up"/>
-                                    <constraint firstItem="WWk-cv-gFC" firstAttribute="width" secondItem="ZKd-A7-2Hc" secondAttribute="width" id="Khf-Nc-YI4"/>
-                                    <constraint firstAttribute="trailing" secondItem="WWk-cv-gFC" secondAttribute="trailing" id="Vef-ne-rLv"/>
+                                    <constraint firstItem="WWk-cv-gFC" firstAttribute="leading" secondItem="ZKd-A7-2Hc" secondAttribute="leading" constant="12" id="GAo-xu-5up"/>
+                                    <constraint firstItem="WWk-cv-gFC" firstAttribute="width" secondItem="ZKd-A7-2Hc" secondAttribute="width" multiplier="0.93" id="Khf-Nc-YI4"/>
+                                    <constraint firstAttribute="trailing" secondItem="WWk-cv-gFC" secondAttribute="trailing" constant="12" id="Vef-ne-rLv"/>
                                     <constraint firstAttribute="bottom" secondItem="WWk-cv-gFC" secondAttribute="bottom" id="XXF-mr-5pX"/>
                                 </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="DPn-rH-vmh"/>

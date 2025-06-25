@@ -16,7 +16,7 @@ struct Player {
     
     // dice
     
-    var diceRack = (0..<5).map { _ in Dice() }
+    var diceRack = (0..<5).map { _ in Dice() } // do as array w/ repeating?
     
     // upper scoring - 1's, 2's, 3's, 4's, 5's, 6's, bonus
     

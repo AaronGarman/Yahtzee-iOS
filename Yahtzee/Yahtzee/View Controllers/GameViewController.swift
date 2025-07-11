@@ -243,7 +243,8 @@ class GameViewController: UIViewController {
     
     func drawBorder(for layer: CALayer) {
         layer.borderWidth = 1
-        layer.borderColor = UIColor.black.cgColor
+        // layer.borderColor = UIColor.black.cgColor
+        layer.borderColor = UIColor.label.cgColor
     }
     
     func initSounds() {
